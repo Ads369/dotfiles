@@ -5,7 +5,12 @@
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"
 # poetry
-# export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# NNN
+[ -f ~/.dotfiles/.zshrc_nnn ] && source ~/.dotfiles/.zshrc_nnn
+export NNN_PLUG='p:preview-tui'
+export NNN_FIFO=/tmp/nnn.fifo
 
 # Theme
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -46,4 +51,3 @@ alias po='poetry'
 # I Don't know what is it
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
