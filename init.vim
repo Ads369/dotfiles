@@ -1,25 +1,11 @@
-set mouse=a  " enable mouse
-set encoding=utf-8
-set number
-set noswapfile
-set scrolloff=7
-set clipboard+=unnamedplus
-lang en_US.UTF-8
+"===============
+"== PLUGINS ===
+"===============
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set fileformat=unix
-filetype indent on      " load filetype-specific indent files
-
-inoremap jk <esc>
-inoremap jj <esc>
-map <Space> <Leader>
 
 call plug#begin('~/.vim/plugged')
 
+" general
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -32,17 +18,151 @@ Plug 'morhetz/gruvbox'  " colorscheme gruvbox
 Plug 'mhartington/oceanic-next'  " colorscheme OceanicNext
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
+Plug 'xiyaowong/nvim-transparent' " transparent 
 
-" For JS/JSX
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+" JS/JSX/TS
+" Plug 'pangloss/vim-javascript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'maxmellon/vim-jsx-pretty'
+" TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
+" Plug 'jose-elias-alvarez/null-ls.nvim'
+" Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'preservim/nerdcommenter'
+Plug 'nvim-lua/plenary.nvim'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
+ "search
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'LinArcX/telescope-command-palette.nvim'
 
 call plug#end()
 
-colorscheme gruvbox
+""===============
+"=== SETTINGS ===
+"===============
 
+syntax enable
+filetype plugin indent on 
+
+set mouse=a  " enable mouse
+set encoding=utf-8
+set number
+set noswapfile
+set scrolloff=7
+set colorcolumn=79
+set clipboard+=unnamedplus
+lang en_US.UTF-8
+
+" for tabulation
+set smartindent
+set tabstop=2
+set expandtab
+set shiftwidth=2
+
+" colors
+colorscheme gruvbox
+" if (has('termguicolors'))
+"  set termguicolors
+" endif
+" syntax enable
+
+
+" Binds {{{
+inoremap jk <esc>
+inoremap jj <esc>
+" Leader bind to space
+let mapleader = " "
 " turn off search highlight
 nnoremap ,<space> :nohlsearch<CR>
+" Go to next or prev tab by H and L accordingly
+nnoremap H gT
+nnoremap L gt
+" Work with buffer (popups)
+map gn :bn<cr>
+map gp :bp<cr>
+map gw :Bclose<cr>
+
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+
+" }}}
+
+
+" Netrw file explorer settings {{{
+let g:netrw_banner = 1 " hide banner above files
+let g:netrw_liststyle = 3 " tree instead of plain view
+let g:netrw_browse_split = 3 " vertical split window when Enter pressed on file
+" }}}
+
+" Telescope setting {{{
+" Telescope bindings
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
+" Telescope fzf plugin
+lua << EOF
+require('telescope').load_extension('fzf')
+EOF
+" Telescope command_palette plugin
+lua << EOF
+require('telescope').setup({
+  extensions = {
+    command_palette = {
+      {"File",
+        { "entire selection (C-a)", ':call feedkeys("GVgg")' },
+        { "save current file (C-s)", ':w' },
+        { "save all files (C-A-s)", ':wa' },
+        { "quit (C-q)", ':qa' },
+        { "file browser (C-i)", ":lua require'telescope'.extensions.file_browser.file_browser()", 1 },
+        { "search word (A-w)", ":lua require('telescope.builtin').live_grep()", 1 },
+        { "git files (A-f)", ":lua require('telescope.builtin').git_files()", 1 },
+        { "files (C-f)",     ":lua require('telescope.builtin').find_files()", 1 },
+      },
+      {"Help",
+        { "tips", ":help tips" },
+        { "cheatsheet", ":help index" },
+        { "tutorial", ":help tutor" },
+        { "summary", ":help summary" },
+        { "quick reference", ":help quickref" },
+        { "search help(F1)", ":lua require('telescope.builtin').help_tags()", 1 },
+      },
+      {"Vim",
+        { "reload vimrc", ":source $MYVIMRC" },
+        { 'check health', ":checkhealth" },
+       { "jumps (Alt-j)", ":lua require('telescope.builtin').jumplist()" },
+        { "commands", ":lua require('telescope.builtin').commands()" },
+        { "command history", ":lua require('telescope.builtin').command_history()" },
+        { "registers (A-e)", ":lua require('telescope.builtin').registers()" },
+        { "colorshceme", ":lua require('telescope.builtin').colorscheme()", 1 },
+        { "vim options", ":lua require('telescope.builtin').vim_options()" },
+        { "keymaps", ":lua require('telescope.builtin').keymaps()" },
+        { "buffers", ":Telescope buffers" },
+        { "search history (C-h)", ":lua require('telescope.builtin').search_history()" },
+        { "paste mode", ':set paste!' },
+        { 'cursor line', ':set cursorline!' },
+        { 'cursor column', ':set cursorcolumn!' },
+        { "spell checker", ':set spell!' },
+        { "relative number", ':set relativenumber!' },
+        { "search highlighting (F12)", ':set hlsearch!' },
+      }
+    }
+  }
+})
+require('telescope').load_extension('command_palette')
+EOF
+" }}}
+
+
+
 
 lua << EOF
 -- Set completeopt to have a better completion experience
@@ -98,10 +218,6 @@ cmp.setup {
   },
 }
 EOF
-
-
-
-
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -228,12 +344,6 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
-
-map gn :bn<cr>
-map gp :bp<cr>
-map gw :Bclose<cr>
-
-set colorcolumn=79
 
 " run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
