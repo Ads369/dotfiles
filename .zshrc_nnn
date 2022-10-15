@@ -27,3 +27,5 @@ n3 ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+export NNN_BMS="d:$HOME/Documents;D:$HOME/Downloads/;p:$HOME/Documents/Dev/Py"

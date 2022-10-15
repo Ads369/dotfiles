@@ -39,6 +39,9 @@ bindkey "^[[F" end-of-line
 # Neovim
 alias n='nvim'
 
+# Python
+alias py=python3
+
 # Docker aliases
 alias dps='docker ps'
 

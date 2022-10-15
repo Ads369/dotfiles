@@ -1,0 +1,53 @@
+font_family      SF Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size 14.0
+
+
+scrollback_lines 10000
+copy_on_select clipboard
+strip_trailing_spaces smart
+enable_audio_bell no
+window_alert_on_bell yes
+
+background_opacity 0.9
+# background            #110b0d
+# foreground            #f6d56a
+# cursor                #c36c32
+# selection_background  #f6d56a
+# color0                #341a0d
+# color8                #874227
+# color1                #9b281b
+# color9                #ff4230
+# color2                #626132
+# color10               #b3b163
+# color3                #c26e27
+# color11               #ff9565
+# color4                #515b5c
+# color12               #9eb2b3
+# color5                #9b1d29
+# color13               #ff5b6a
+# color6                #588056
+# color14               #89cc8e
+# color7                #f6d75c
+# color15               #ffe597
+# selection_foreground #110b0d
+
+window_padding_width 2
+tab_bar_style powerline
+map cmd+t new_tab_with_cwd
+# active_tab_background   #9ec400
+
+allow_remote_control yes
+listen_on unix:$TMPDIR/kitty
+enabled_layouts splits
+
+cursor_shape block
+shell_integration enabled no-cursor
+
+
+# BEGIN_KITTY_THEME
+# Default
+include current-theme.conf
+# END_KITTY_THEME
