@@ -1,63 +1,16 @@
-"===============
-"== PLUGINS ===
-"===============
-
-
-call plug#begin('~/.vim/plugged')
-
-" general
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
-
-
-" color schemas
-Plug 'morhetz/gruvbox'  " colorscheme gruvbox
-Plug 'mhartington/oceanic-next'  " colorscheme OceanicNext
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'ayu-theme/ayu-vim'
-Plug 'xiyaowong/nvim-transparent' " transparent 
-
-" JS/JSX/TS
-" Plug 'pangloss/vim-javascript'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'maxmellon/vim-jsx-pretty'
-" TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
-" Plug 'jose-elias-alvarez/null-ls.nvim'
-" Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'preservim/nerdcommenter'
-Plug 'nvim-lua/plenary.nvim'
-
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-
- "search
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'LinArcX/telescope-command-palette.nvim'
-
-call plug#end()
-
-""===============
-"=== SETTINGS ===
-"===============
-
-syntax enable
-filetype plugin indent on 
-
 set mouse=a  " enable mouse
 set encoding=utf-8
 set number
 set noswapfile
 set scrolloff=7
-set colorcolumn=79
-set clipboard+=unnamedplus
-lang en_US.UTF-8
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set fileformat=unix
+filetype indent on      " load filetype-specific indent files
 
 " for tabulation
 set smartindent
@@ -65,104 +18,87 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 
-" colors
-colorscheme gruvbox
-" if (has('termguicolors'))
-"  set termguicolors
-" endif
-" syntax enable
-
-
-" Binds {{{
 inoremap jk <esc>
-inoremap jj <esc>
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+
+" color schemas
+Plug 'morhetz/gruvbox'  " colorscheme gruvbox
+Plug 'mhartington/oceanic-next'  " colorscheme OceanicNext
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'ayu-theme/ayu-vim'
+
+Plug 'xiyaowong/nvim-transparent'
+
+Plug 'Pocco81/auto-save.nvim'
+Plug 'justinmk/vim-sneak'
+
+" JS/JSX/TS
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'maxmellon/vim-jsx-pretty'
+" TS from here https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'nvim-lua/plenary.nvim'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
+Plug 'bmatcuk/stylelint-lsp'
+
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+" Convenient floating terminal window
+"Plug 'voldikss/vim-floaterm'
+
+call plug#end()
+
 " Leader bind to space
-let mapleader = " "
-" turn off search highlight
-nnoremap ,<space> :nohlsearch<CR>
-" Go to next or prev tab by H and L accordingly
-nnoremap H gT
-nnoremap L gt
-" Work with buffer (popups)
-map gn :bn<cr>
-map gp :bp<cr>
-map gw :Bclose<cr>
+let mapleader = ","
 
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
-
-
-" }}}
-
-
-" Netrw file explorer settings {{{
-let g:netrw_banner = 1 " hide banner above files
+" Netrw file explorer settings
+let g:netrw_banner = 0 " hide banner above files
 let g:netrw_liststyle = 3 " tree instead of plain view
 let g:netrw_browse_split = 3 " vertical split window when Enter pressed on file
-" }}}
 
-" Telescope setting {{{
-" Telescope bindings
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
-" Telescope fzf plugin
-lua << EOF
-require('telescope').load_extension('fzf')
-EOF
-" Telescope command_palette plugin
-lua << EOF
-require('telescope').setup({
-  extensions = {
-    command_palette = {
-      {"File",
-        { "entire selection (C-a)", ':call feedkeys("GVgg")' },
-        { "save current file (C-s)", ':w' },
-        { "save all files (C-A-s)", ':wa' },
-        { "quit (C-q)", ':qa' },
-        { "file browser (C-i)", ":lua require'telescope'.extensions.file_browser.file_browser()", 1 },
-        { "search word (A-w)", ":lua require('telescope.builtin').live_grep()", 1 },
-        { "git files (A-f)", ":lua require('telescope.builtin').git_files()", 1 },
-        { "files (C-f)",     ":lua require('telescope.builtin').find_files()", 1 },
-      },
-      {"Help",
-        { "tips", ":help tips" },
-        { "cheatsheet", ":help index" },
-        { "tutorial", ":help tutor" },
-        { "summary", ":help summary" },
-        { "quick reference", ":help quickref" },
-        { "search help(F1)", ":lua require('telescope.builtin').help_tags()", 1 },
-      },
-      {"Vim",
-        { "reload vimrc", ":source $MYVIMRC" },
-        { 'check health', ":checkhealth" },
-       { "jumps (Alt-j)", ":lua require('telescope.builtin').jumplist()" },
-        { "commands", ":lua require('telescope.builtin').commands()" },
-        { "command history", ":lua require('telescope.builtin').command_history()" },
-        { "registers (A-e)", ":lua require('telescope.builtin').registers()" },
-        { "colorshceme", ":lua require('telescope.builtin').colorscheme()", 1 },
-        { "vim options", ":lua require('telescope.builtin').vim_options()" },
-        { "keymaps", ":lua require('telescope.builtin').keymaps()" },
-        { "buffers", ":Telescope buffers" },
-        { "search history (C-h)", ":lua require('telescope.builtin').search_history()" },
-        { "paste mode", ':set paste!' },
-        { 'cursor line', ':set cursorline!' },
-        { 'cursor column', ':set cursorcolumn!' },
-        { "spell checker", ':set spell!' },
-        { "relative number", ':set relativenumber!' },
-        { "search highlighting (F12)", ':set hlsearch!' },
-      }
-    }
-  }
-})
-require('telescope').load_extension('command_palette')
-EOF
-" }}}
+" Automatically format frontend files with prettier after file save
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
+" Disable quickfix window for prettier
+let g:prettier#quickfix_enabled = 0
 
+" Turn on vim-sneak
+let g:sneak#label = 1
 
+colorscheme gruvbox
+"colorscheme OceanicNext
+"let g:material_terminal_italics = 1
+" variants: default, palenight, ocean, lighter, darker, default-community,
+"           palenight-community, ocean-community, lighter-community,
+"           darker-community
+"let g:material_theme_style = 'darker'
+"colorscheme material
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+" variants: mirage, dark, dark
+"let ayucolor="mirage"
+"colorscheme ayu
+
+" turn off search highlight
+nnoremap ,<space> :nohlsearch<CR>
 
 lua << EOF
 -- Set completeopt to have a better completion experience
@@ -170,6 +106,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
 local luasnip = require 'luasnip'
+local async = require "plenary.async"
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -217,9 +154,7 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-EOF
 
-lua << EOF
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -253,12 +188,53 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
 end
+
+-- TS setup
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+        silent = true,
+    })
+end
+
+nvim_lsp.tsserver.setup({
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+        buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+        on_attach(client, bufnr)
+    end,
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.code_actions.eslint,
+        null_ls.builtins.formatting.prettier
+    },
+    on_attach = on_attach
+})
+
+-- Stylelint format after save
+require'lspconfig'.stylelint_lsp.setup{
+  settings = {
+    stylelintplus = {
+      --autoFixOnSave = true,
+      --autoFixOnFormat = true,
+    }
+  }
+}
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright' }
+local servers = { 'pyright', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -268,7 +244,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 EOF
-
 
 
 " Delete buffer while keeping window layout (don't close buffer's windows).
@@ -344,8 +319,70 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
+map gn :bn<cr>
+map gp :bp<cr>
+map gw :Bclose<cr>
 
-" run current script with python3 by CTRL+R in command and insert mode
-autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+" Run Python and C files by Ctrl+h
+autocmd FileType python map <buffer> <C-h> :w<CR>:exec '!python3.10' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <C-h> <esc>:w<CR>:exec '!python3.10' shellescape(@%, 1)<CR>
 
+autocmd FileType c map <buffer> <C-h> :w<CR>:exec '!gcc' shellescape(@%, 1) '-o out; ./out'<CR>
+autocmd FileType c imap <buffer> <C-h> <esc>:w<CR>:exec '!gcc' shellescape(@%, 1) '-o out; ./out'<CR>
+
+autocmd FileType python set colorcolumn=79
+
+set relativenumber
+set rnu
+
+let g:transparent_enabled = v:true
+
+tnoremap <Esc> <C-\><C-n>
+
+" Telescope bindings
+nnoremap ,f <cmd>Telescope find_files<cr>
+nnoremap ,g <cmd>Telescope live_grep<cr>
+
+" Go to next or prev tab by H and L accordingly
+nnoremap H gT
+nnoremap L gt
+
+" Autosave plugin
+lua << EOF
+require("auto-save").setup({
+        enabled = true,
+            execution_message = {
+		    message = function() -- message to print on save
+			        return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+		        end,
+		        dim = 0.18, -- dim the color of `message`
+		        cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+	      },
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135,
+})
+EOF
+
+" Telescope fzf plugin
+lua << EOF
+require('telescope').load_extension('fzf')
+EOF
+
+" Fast component creating for React app
+command CreateComponent :terminal '/Users/alexeygoloburdin/code/lms/frontend/createcomponent.py'
+
+" White colors for LSP messages in code
+set termguicolors
+hi DiagnosticError guifg=White
+hi DiagnosticWarn  guifg=White
+hi DiagnosticInfo  guifg=White
+hi DiagnosticHint  guifg=White

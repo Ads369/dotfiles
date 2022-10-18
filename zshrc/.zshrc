@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # NNN
-[ -f ~/.dotfiles/.zshrc_nnn ] && source ~/.dotfiles/.zshrc_nnn
+[ -f ~/.dotfiles/zshrc/.zshrc_nnn ] && source ~/.dotfiles/zshrc/.zshrc_nnn
 export NNN_PLUG='p:preview-tui'
 export NNN_FIFO=/tmp/nnn.fifo
 
@@ -54,3 +54,5 @@ alias po='poetry'
 # I Don't know what is it
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
