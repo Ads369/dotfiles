@@ -14,7 +14,8 @@ export NNN_FIFO=/tmp/nnn.fifo
 
 # Theme
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="arrow"
+# ZSH_THEME="arrow"
+ZSH_THEME="avit"
 
 
 # Plugins
