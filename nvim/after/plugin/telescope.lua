@@ -7,8 +7,8 @@ local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
+-- telescope-file-browser
 local fb_actions = require "telescope".extensions.file_browser.actions
-
 telescope.setup {
   defaults = {
     mappings = {
@@ -37,10 +37,16 @@ telescope.setup {
         },
       },
     },
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+    },
   },
 }
-
 telescope.load_extension("file_browser")
+telescope.load_extension('fzf')
 
 vim.keymap.set('n', ';f',
   function()
@@ -52,19 +58,19 @@ vim.keymap.set('n', ';f',
 vim.keymap.set('n', ';r', function()
   builtin.live_grep()
 end)
-vim.keymap.set('n', '\\\\', function()
+vim.keymap.set('n', ';b', function()
   builtin.buffers()
 end)
-vim.keymap.set('n', ';t', function()
+vim.keymap.set('n', ';h', function()
   builtin.help_tags()
 end)
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end)
-vim.keymap.set('n', ';e', function()
+vim.keymap.set('n', ';d', function()
   builtin.diagnostics()
 end)
-vim.keymap.set("n", "sf", function()
+vim.keymap.set("n", "\\\\", function()
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
@@ -76,3 +82,14 @@ vim.keymap.set("n", "sf", function()
     layout_config = { height = 40 }
   })
 end)
+
+
+-- Telescope old keymaps
+-- vim.keymap.set('n', '<leader>fn', ':Telescope find_files<CR>')
+-- map('n', '<leader>fr', ':Telescope resume<CR>')
+-- map('n', '<leader>ff', ':Telescope live_grep<CR>')
+-- map('n', '<leader>FF', ':Telescope grep_string<CR>')
+-- map('n', '<leader>fG', ':Telescope git_branches<CR>')
+-- map('n', '<leader>fg', ':Telescope git_status<CR>')
+-- -- map('n', '<c-\\>', ':Telescope buffers<CR>')
+-- map('n', '<leader>fs', ':Telescope lsp_document_symbols<CR>')

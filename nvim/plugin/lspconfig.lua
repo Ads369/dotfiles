@@ -1,5 +1,3 @@
---vim.lsp.set_log_level("debug")
-
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
@@ -33,7 +31,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
 protocol.CompletionItemKind = {
@@ -69,22 +67,37 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.flow.setup {
+-- nvim_lsp.flow.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- }
+
+nvim_lsp.pyright.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  filetype = { "python" },
+  cmd = { "pyright-langserver", "--stdio" },
+  setting = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
 }
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
-}
+-- nvim_lsp.tsserver.setup {
+--   on_attach = on_attach,
+--   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+--   cmd = { "typescript-language-server", "--stdio" },
+--   capabilities = capabilities
+-- }
 
-nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+-- nvim_lsp.sourcekit.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 
 nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
@@ -108,20 +121,20 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
-nvim_lsp.tailwindcss.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+-- nvim_lsp.tailwindcss.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- }
 
-nvim_lsp.cssls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+-- nvim_lsp.cssls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- }
 
-nvim_lsp.astro.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+-- nvim_lsp.astro.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities
+-- }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

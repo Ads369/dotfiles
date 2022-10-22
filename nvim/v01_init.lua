@@ -93,7 +93,7 @@ g.netrw_liststyle = 3
 
 -- Uncomment just ONE of the following colorschemes!
 -- local ok, _ = pcall(vim.cmd, 'colorscheme base16-dracula')
-local ok, _ = pcall(vim.cmd, 'colorscheme gruvbox')
+-- local ok, _ = pcall(vim.cmd, 'colorscheme gruvbox')
 
 -- Highlight the region on yank
 A.nvim_create_autocmd('TextYankPost', {
@@ -102,6 +102,26 @@ A.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
     end,
 })
+
+-- Setting for gruvbox
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = true,
+})
+vim.cmd("colorscheme gruvbox")
 
 -------------------------------------------------
 -- KEYBINDINGS
@@ -229,7 +249,9 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Colorschemes --
-  use 'morhetz/gruvbox'
+  -- use 'morhetz/gruvbox' -- Old version
+  use { "ellisonleao/gruvbox.nvim" } -- New version
+  use 'xiyaowong/nvim-transparent'
 
   -- LSP and CMP --
   use 'neovim/nvim-lspconfig'
@@ -493,6 +515,12 @@ end)
   vim.keymap.set('n', '\\', ':NvimTreeToggle<CR>', {silent=true})
 
 
+  ---------------------
+  -- transparent --
+  ---------------------
+  require("transparent").setup({
+    enable = true, -- boolean: enable transparent
+  })
 
   ---------------------
   -- Icon --
