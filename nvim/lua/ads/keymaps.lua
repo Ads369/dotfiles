@@ -47,12 +47,9 @@ map('n', '<c-i>', '<c-i>zz')
 -- Move to the next/previous buffer
 map('n', ']b', '<CMD>bn<CR>')
 map('n', '[b', '<CMD>bp<CR>')
-map('n', 'cb', '<CMD>Bclose<CR>')
--- map('n', 'gq', ':bd!<CR>')
--- map('n', '[b', ':bnext<CR>')
--- map('n', ']b', ':bprev<CR>')
+map('n', 'cd', ':bd!<CR>')
 -- Little support for 'gd'
-map('n', 'gb', '<C-o>')
+-- map('n', 'gb', '<C-o>')
 
 -- Split window
 map('n', 'ss', ':split<Return>')
@@ -70,10 +67,10 @@ map('n', '<C-w><down>', '<C-w>-')
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
--- map('n', '<A-j>', '<CMD>move .+1<CR>')
--- map('n', '<A-k>', '<CMD>move .-2<CR>')
--- map('x', '<A-j>', ":move '>+1<CR>gv=gv")
--- map('x', '<A-k>', ":move '<-2<CR>gv=gv")
+map('n', '<A-j>', '<CMD>move .+1<CR>')
+map('n', '<A-k>', '<CMD>move .-2<CR>')
+map('x', '<A-j>', ":move '>+1<CR>gv=gv")
+map('x', '<A-k>', ":move '<-2<CR>gv=gv")
 
 -- David-Kunz keymaps
 -- map('n', '<leader><esc><esc>', ':tabclose<CR>')

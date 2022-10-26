@@ -12,7 +12,7 @@ packer.startup(function(use)
 
   -- ColorScheme
   use 'ellisonleao/gruvbox.nvim' -- New version grovbox
-  -- use 'xiyaowong/nvim-transparent' -- transparen for Neovim use only ColorSheme don't have it
+  use 'xiyaowong/nvim-transparent' -- transparen for Neovim use only ColorSheme don't have it
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'akinsho/nvim-bufferline.lua' -- Tabsline
@@ -30,8 +30,8 @@ packer.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig' -- LSP-- Autocomplete vscode-like
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  -- use 'glepnir/lspsaga.nvim' -- LSP UIs
-  -- use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use "ray-x/lsp_signature.nvim" -- Signature helper vscode-like
 
   use 'L3MON4D3/LuaSnip' -- Snippet
@@ -46,6 +46,7 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/cmp-path' -- file path completions
   use 'hrsh7th/cmp-cmdline' -- Autocomplete cmdline
+  -- use("hrsh7th/cmp-nvim-lsp-signature-help")
 
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag' -- auto tags for TS
@@ -56,10 +57,17 @@ packer.startup(function(use)
 
   -- File browser
   use 'nvim-telescope/telescope-file-browser.nvim'
-  -- use 'nvim-tree/nvim-tree.lua' -- file explorer
+  use 'nvim-tree/nvim-tree.lua' -- file explorer
 
   use 'lewis6991/gitsigns.nvim'
   -- use 'mhartington/formatter.nvim' -- formatter
-  use { 'psf/black', branch = 'stable' }
+  -- use { 'psf/black', branch = 'stable' }
+
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()'
+  }
+
+  use 'folke/which-key.nvim' -- Popup for hotkeys
 
 end)

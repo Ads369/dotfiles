@@ -16,6 +16,7 @@ gruvbox.setup({
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
-  transparent_mode = true,
+  -- transparent_mode = true,
+  transparent_mode = vim.g.transparent_enabled, -- Connect transparent plugin
 })
 vim.cmd("colorscheme gruvbox")

@@ -56,6 +56,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = "path" }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
+    { name = 'nvim_lsp_signature_help' },
   }),
   completion = {
     keyword_length = 1,
@@ -63,8 +64,8 @@ cmp.setup({
   },
   formatting = {
     format = lspkind.cmp_format({ with_text = false, maxwidth = 50,
-      mode = "symbol_text",
-      -- mode = "symbol",
+      -- mode = "symbol_text",
+      mode = "symbol",
       menu = {
         nvim_lsp = "[LSP]",
         nvim_lua = "[Lua]",

@@ -54,23 +54,23 @@ vim.keymap.set('n', ';f',
       no_ignore = false,
       hidden = true
     })
-  end)
+  end, { desc = 'file' })
 vim.keymap.set('n', ';r', function()
   builtin.live_grep()
-end)
+end, { desc = 'grep' })
 vim.keymap.set('n', ';b', function()
   builtin.buffers()
-end)
+end, { desc = 'buffer' })
 vim.keymap.set('n', ';h', function()
   builtin.help_tags()
-end)
+end, { desc = 'help' })
 vim.keymap.set('n', ';;', function()
   builtin.resume()
-end)
+end, { desc = 'recent' })
 vim.keymap.set('n', ';d', function()
   builtin.diagnostics()
-end)
-vim.keymap.set("n", "\\\\", function()
+end, { desc = 'diagnostic' })
+vim.keymap.set("n", ";\\", function()
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
@@ -81,7 +81,7 @@ vim.keymap.set("n", "\\\\", function()
     initial_mode = "normal",
     layout_config = { height = 40 }
   })
-end)
+end, { desc = 'file browser' })
 
 
 -- Telescope old keymaps
