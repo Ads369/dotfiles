@@ -12,7 +12,6 @@ fi
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"
 # poetry
-export PATH="$HOME/.poetry/bin:$PATH"
 
 # NNN
 [ -f ~/.dotfiles/zshrc/.zshrc_nnn ] && source ~/.dotfiles/zshrc/.zshrc_nnn
@@ -28,6 +27,7 @@ ZSH_THEME="avit"
 # Plugins
 plugins=(
 git
+poetry
 zsh-autosuggestions
 zsh-syntax-highlighting
 )
@@ -59,9 +59,11 @@ alias tn='tmux new -s'
 # Poetry
 alias po='poetry'
 
-# I Don't know what is it
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
