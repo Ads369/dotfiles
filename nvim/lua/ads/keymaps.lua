@@ -35,35 +35,35 @@ map('n', '<leader>o', 'o<ESC>')
 map('n', '<leader>O', 'O<ESC>')
 
 -- New tab
-map('n', 'te', ':tabedit')
+map('n', '<leader>te', ':tabedit')
 -- Go to next or prev tab by H and L accordingly
-map('n', ']t', 'gt')
-map('n', '[t', 'gT')
-map('n', 'ct', ':tabclose<CR>')
+map('n', '<leader>t]', 'gt')
+map('n', '<leader>t[', 'gT')
+map('n', '<leader>td', ':bd!<CR>')
 
 -- Move cursor to Old position and New position
 map('n', '<c-o>', '<c-o>zz')
 map('n', '<c-i>', '<c-i>zz')
 -- Move to the next/previous buffer
-map('n', ']b', '<CMD>bn<CR>')
-map('n', '[b', '<CMD>bp<CR>')
-map('n', 'cd', ':bd!<CR>')
--- Little support for 'gd'
--- map('n', 'gb', '<C-o>')
+map('n', '<leader>b]', '<CMD>bn<CR>')
+map('n', '<leader>b[', '<CMD>bp<CR>')
+map('n', '<leader>bd', ':bd!<CR>')
+map('n', '<leader>bo', ':%bd|e#<CR>')
+
 
 -- Split window
-map('n', 'ss', ':split<Return>')
-map('n', 'sv', ':vsplit<Return>')
+map('n', '<leader>ss', ':split<Return>')
+map('n', '<leader>sv', ':vsplit<Return>')
 -- Move window
-map('', 'sh', '<C-w>h')
-map('', 'sk', '<C-w>k')
-map('', 'sj', '<C-w>j')
-map('', 'sl', '<C-w>l')
+map('', '<leader>sh', '<C-w>h')
+map('', '<leader>sk', '<C-w>k')
+map('', '<leader>sj', '<C-w>j')
+map('', '<leader>sl', '<C-w>l')
 -- Resize window
-map('n', '<C-w><left>', '<C-w><')
-map('n', '<C-w><right>', '<C-w>>')
-map('n', '<C-w><up>', '<C-w>+')
-map('n', '<C-w><down>', '<C-w>-')
+map('n', '<leader>w<left>', '<C-w><')
+map('n', '<leader>w<right>', '<C-w>>')
+map('n', '<leader>w<up>', '<C-w>+')
+map('n', '<leader>w<down>', '<C-w>-')
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down

@@ -52,11 +52,11 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
+    { name = 'nvim_lsp_signature_help' },
     { name = "nvim_lsp" }, -- For nvim-lsp
     { name = 'luasnip' },
     { name = "path" }, -- for path completion
     { name = "buffer", keyword_length = 2 }, -- for buffer word completion
-    { name = 'nvim_lsp_signature_help' },
   }),
   completion = {
     keyword_length = 1,
@@ -75,8 +75,6 @@ cmp.setup({
     })
   }
 })
-
-
 
 
 vim.cmd [[

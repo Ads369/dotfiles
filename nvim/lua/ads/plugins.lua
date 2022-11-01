@@ -33,6 +33,9 @@ packer.startup(function(use)
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use "ray-x/lsp_signature.nvim" -- Signature helper vscode-like
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  -- use 'jayp0521/mason-null-ls.nvim'
 
   use 'L3MON4D3/LuaSnip' -- Snippet
   use {
@@ -46,7 +49,14 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/cmp-path' -- file path completions
   use 'hrsh7th/cmp-cmdline' -- Autocomplete cmdline
-  -- use("hrsh7th/cmp-nvim-lsp-signature-help")
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+  --DAP (Debug Adapter Protocol)
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'rcarriga/nvim-dap-ui'
+  -- use 'mfussenegger/nvim-dap-python'
+  -- use 'theHamsta/nvim-dap-virtual-text'ads plug
+  -- use 'nvim-telescope/telescope-dap.nvim'
 
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag' -- auto tags for TS
@@ -63,10 +73,10 @@ packer.startup(function(use)
   -- use 'mhartington/formatter.nvim' -- formatter
   -- use { 'psf/black', branch = 'stable' }
 
-  use {
-    'kkoomen/vim-doge',
-    run = ':call doge#install()'
-  }
+  -- use {
+  --   'kkoomen/vim-doge',
+  --   run = ':call doge#install()'
+  -- }
 
   use 'folke/which-key.nvim' -- Popup for hotkeys
 
