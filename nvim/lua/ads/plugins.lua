@@ -73,10 +73,10 @@ packer.startup(function(use)
   -- use 'mhartington/formatter.nvim' -- formatter
   -- use { 'psf/black', branch = 'stable' }
 
-  -- use {
-  --   'kkoomen/vim-doge',
-  --   run = ':call doge#install()'
-  -- }
+  use {
+    'kkoomen/vim-doge',
+    run = ':call doge#install()'
+  }
 
   use 'folke/which-key.nvim' -- Popup for hotkeys
 

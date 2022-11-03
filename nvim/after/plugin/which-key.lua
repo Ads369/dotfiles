@@ -1,7 +1,13 @@
 local status, wk = pcall(require, "which-key")
 if (not status) then return end
 
-wk.register()
+wk.register({
+  ["g?"] = { "<cmd>WhichKey<cr>", "WhichKey" },
+  [";"] = { name = "Telescope" },
+  ["<leader>t"] = { name = "Tabs" },
+  ["<leader>b"] = { name = "Buffer" },
+  ["<leader>l"] = { name = "LSP" },
+})
 
 -- method 1
 -- wk.register({
