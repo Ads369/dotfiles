@@ -182,3 +182,8 @@ windwp
 writebackup
 xiyaowong
 zindex
+cpath
+gsub
+ipairs
+loadstring
+pcall

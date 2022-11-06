@@ -1,10 +1,6 @@
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 
--- Custom function for displqy info
-local function hello()
-  return [[hello world]]
-end
 
 local function lsp_server_active()
   local msg = 'No Active Lsp'

@@ -12,7 +12,7 @@
   // "flagWords": ["hte"],
 
   // Enable your dictionary by adding it to the list of `dictionaries`
-  //"dictionaries": ["lua"],
+  "dictionaries": ["lua"],
 
   "overrides": [
     {
@@ -24,8 +24,8 @@
   // Tell CSpell about your dictionary
   "dictionaryDefinitions": [
     {
-      "name": "lua-words",
-      "path": "./cspell_dict/custom-words.txt",
+      "name": "lua",
+      "path": "./cspell_dict/lua.txt",
       "addWords": true
     }
   ]
