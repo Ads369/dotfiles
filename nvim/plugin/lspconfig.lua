@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   --global
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
