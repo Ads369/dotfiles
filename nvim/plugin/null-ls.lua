@@ -15,13 +15,14 @@ end
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.eslint_d.with({
-      diagnostics_format = '[eslint] #{m}\n(#{c})'
-    }),
     null_ls.builtins.diagnostics.mypy,
     null_ls.builtins.formatting.black.with({
       extra_args = { "--line-length", "79" },
     }),
+    null_ls.builtins.diagnostics.cspell.with({
+      extra_args = { "--config", vim.fn.expand("~/.dotfiles/nvim/cspell.json") },
+    }),
+    null_ls.builtins.code_actions.cspell,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
