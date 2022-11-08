@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   --global
-  vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, { desc = "Show list of errors" })
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename<CR>', opts)
   -- off
-  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 end
 
 protocol.CompletionItemKind = {

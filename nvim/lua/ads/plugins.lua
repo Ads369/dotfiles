@@ -52,10 +52,10 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
   --DAP (Debug Adapter Protocol)
-  -- use 'mfussenegger/nvim-dap'
-  -- use 'rcarriga/nvim-dap-ui'
-  -- use 'mfussenegger/nvim-dap-python'
-  -- use 'theHamsta/nvim-dap-virtual-text'ads plug
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'mfussenegger/nvim-dap-python'
+  -- use 'theHamsta/nvim-dap-virtual-text'
   -- use 'nvim-telescope/telescope-dap.nvim'
 
   use 'windwp/nvim-autopairs'
@@ -70,8 +70,6 @@ packer.startup(function(use)
   use 'nvim-tree/nvim-tree.lua' -- file explorer
 
   use 'lewis6991/gitsigns.nvim'
-  -- use 'mhartington/formatter.nvim' -- formatter
-  -- use { 'psf/black', branch = 'stable' }
 
   use {
     'kkoomen/vim-doge',

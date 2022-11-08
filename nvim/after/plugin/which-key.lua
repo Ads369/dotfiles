@@ -7,6 +7,7 @@ wk.register({
   ["<leader>t"] = { name = "Tabs" },
   ["<leader>b"] = { name = "Buffer" },
   ["<leader>l"] = { name = "LSP" },
+  ["<leader>d"] = { name = "DoGe/DAP" },
 })
 
 -- method 1

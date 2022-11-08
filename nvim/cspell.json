@@ -12,28 +12,28 @@
   // "flagWords": ["hte"],
 
   // Enable your dictionary by adding it to the list of `dictionaries`
-  //"dictionaries": ["lua"],
+  "dictionaries": ["python_custom", "lua_custom"],
 
   "overrides": [
     {
-      "filename": "**/*.lua",
-      "dictionaries": ["lua"]
+      "filename": "*.lua",
+      "dictionaries": ["lua_custom"]
     },
     {
-      "filename": "**/*.py",
-      "dictionaries": ["python"]
+      "filename": "*.py",
+      "dictionaries": ["python_custom"]
     }
   ],
 
   // Tell CSpell about your dictionary
   "dictionaryDefinitions": [
     {
-      "name": "lua",
+      "name": "lua_custom",
       "path": "./cspell_dict/lua.txt",
       "addWords": true
     },
     {
-      "name": "python",
+      "name": "python_custom",
       "path": "./cspell_dict/python.txt",
       "addWords": true
     }

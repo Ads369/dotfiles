@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+dataclasses
+zeep
+urllib
+loguru
+webservices
+wsszeep
+httpx
+pathlib
+pyodbc
+pytest
+pylint
+rtype
