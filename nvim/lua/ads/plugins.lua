@@ -26,12 +26,13 @@ packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'nvim-lua/popup.nvim' -- An implementation of the Popup API from vim in Neovim
+  use 'RRethy/vim-illuminate'
 
   -- LSP
   use 'neovim/nvim-lspconfig' -- LSP-- Autocomplete vscode-like
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use 'jose-elias-alvarez/null-ls.nvim' -- inject LSP diagnostics, code actions, and more via Lua
   use "ray-x/lsp_signature.nvim" -- Signature helper vscode-like
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
@@ -49,7 +50,7 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/cmp-path' -- file path completions
   use 'hrsh7th/cmp-cmdline' -- Autocomplete cmdline
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  -- use 'hrsh7th/cmp-nvim-lsp-signature-help'
 
   --DAP (Debug Adapter Protocol)
   use 'mfussenegger/nvim-dap'
