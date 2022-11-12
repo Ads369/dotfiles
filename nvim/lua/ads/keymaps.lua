@@ -65,7 +65,7 @@ vim.keymap.set('x', '˚', ":move '<-2<CR>gv=gv")
 
 -- David-Kunz keymaps
 vim.keymap.set('n', '<leader><esc><esc>', ':tabclose<CR>', { desc = 'Close tab' })
-vim.keymap.set('n', '<leader>n', ':tabe ~/tmp/notes.md<CR>', { desc = 'TMP file' })
+vim.keymap.set('n', '<leader>n', ':tabe ~/Downloads/tmp_notes.md<CR>', { desc = 'TMP file' })
 
 -- vim.keymap.set('n', '<leader>x', ':lua send_line_to_terminal()<CR>')
 -- vim.keymap.set('n', '<leader>ds', ':Telescope dap frames<CR>')

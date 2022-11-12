@@ -55,6 +55,8 @@ alias dps='docker ps'
 
 # Tmux
 alias tn='tmux new -s'
+alias ide='~/.dotfiles/zshrc/tmux_script_ide'
+alias idepy='~/.dotfiles/zshrc/tmux_script_ide_py'
 
 # Poetry
 alias po='poetry'
