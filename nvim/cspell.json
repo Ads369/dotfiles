@@ -29,12 +29,12 @@
   "dictionaryDefinitions": [
     {
       "name": "lua_custom",
-      "path": "./cspell_dict/lua.txt",
+      "path": "~/.dotfiles/nvim/cspell_dict/lua.txt",
       "addWords": true
     },
     {
       "name": "python_custom",
-      "path": "./cspell_dict/python.txt",
+      "path": "~/.dotfiles/nvim/cspell_dict/python.txt",
       "addWords": true
     }
   ]

@@ -1,4 +1,5 @@
 fastapi
+FastAPI
 uvicorn
 dataclasses
 zeep
