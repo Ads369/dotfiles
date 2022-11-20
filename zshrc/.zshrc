@@ -52,6 +52,9 @@ alias py=python3
 
 # Docker aliases
 alias dps='docker ps'
+alias docker_rm_all="docker rm \`docker ps -a -q\`"
+alias docker_rmi_all="docker rmi \`docker images -q\`"
+alias docker_rmi_dangling="docker rmi \`docker images -qa -f 'dangling=true'\`"
 
 # Tmux
 alias tn='tmux new -s'

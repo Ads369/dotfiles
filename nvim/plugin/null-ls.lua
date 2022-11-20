@@ -19,9 +19,9 @@ null_ls.setup {
     null_ls.builtins.formatting.black.with({
       extra_args = { "--line-length", "79" },
     }),
-    null_ls.builtins.diagnostics.cspell.with({
-      extra_args = { "--config", vim.fn.expand("~/.dotfiles/nvim/cspell.json") },
-    }),
+    -- null_ls.builtins.diagnostics.cspell.with({
+    --   extra_args = { "--config", vim.fn.expand("~/.dotfiles/nvim/cspell.json") },
+    -- }),
     null_ls.builtins.code_actions.cspell,
   },
   on_attach = function(client, bufnr)
