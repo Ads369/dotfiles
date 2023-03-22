@@ -12,6 +12,7 @@ fi
 # oh-my-zsh 
 export ZSH="$HOME/.oh-my-zsh"
 # poetry
+export PATH="/Users/ads/.local/bin:$PATH"
 
 # NNN
 [ -f ~/.dotfiles/zshrc/.zshrc_nnn ] && source ~/.dotfiles/zshrc/.zshrc_nnn
@@ -21,7 +22,8 @@ export NNN_FIFO=/tmp/nnn.fifo
 # Theme
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="arrow"
-ZSH_THEME="avit"
+# ZSH_THEME="avit"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 
 # Plugins
@@ -70,8 +72,8 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+source /Users/ads/.docker/init-zsh.sh || true # Added by Docker Desktop
