@@ -29,6 +29,8 @@ vim.keymap.set('n', '<leader>W', '<CMD>wall<CR>', { desc = 'Save all' })
 
 -- Quit neovim
 vim.keymap.set('n', '<C-Q>', '<CMD>q<CR>')
+vim.keymap.set('n', '<leader>q', '<CMD>q<CR>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>Q', '<CMD>qall<CR>', { desc = 'Quit all' })
 
 -- leader-o/O inserts blank line below/above
 vim.keymap.set('n', '<leader>o', 'o<ESC>')

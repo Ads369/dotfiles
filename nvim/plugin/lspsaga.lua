@@ -1,12 +1,20 @@
 local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
-saga.init_lsp_saga {
-  server_filetype_map = {
-    python = 'python',
-    -- typescript = 'typescript'
-  }
-}
+-- saga.init_lsp_saga {
+--   server_filetype_map = {
+--     python = 'python',
+--     -- typescript = 'typescript'
+--   }
+-- }
+
+-- require('lazy').setup({
+--     'glepnir/lspsaga.nvim',
+--     event = 'BufRead',
+--     config = function()
+--       require('lspsaga').setup({})
+--     end
+-- })
 
 local opts = { noremap = true, silent = true }
 -- vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)

@@ -12,7 +12,7 @@ packer.startup(function(use)
 
   -- ColorScheme
   use 'ellisonleao/gruvbox.nvim' -- New version grovbox
-  use 'xiyaowong/nvim-transparent' -- transparen for Neovim use only ColorSheme don't have it
+  use 'xiyaowong/nvim-transparent' -- transparen for Neovim use only ColorSheme don't have itplua
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'akinsho/nvim-bufferline.lua' -- Tabsline
@@ -31,12 +31,20 @@ packer.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig' -- LSP-- Autocomplete vscode-like
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'jose-elias-alvarez/null-ls.nvim' -- inject LSP diagnostics, code actions, and more via Lua
   use "ray-x/lsp_signature.nvim" -- Signature helper vscode-like
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   -- use 'jayp0521/mason-null-ls.nvim'
+
+  -- use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      require('lspsaga').setup({})
+    end,
+  })
 
   use 'L3MON4D3/LuaSnip' -- Snippet
   use {
@@ -58,6 +66,7 @@ packer.startup(function(use)
   use 'mfussenegger/nvim-dap-python'
   -- use 'theHamsta/nvim-dap-virtual-text'
   -- use 'nvim-telescope/telescope-dap.nvim'
+  use 'HiPhish/debugpy.nvim'
 
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag' -- auto tags for TS

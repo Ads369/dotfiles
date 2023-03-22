@@ -1,3 +1,4 @@
+print('init.lua loaded')
 require('ads.base')
 require('ads.appearance')
 require('ads.keymaps')
