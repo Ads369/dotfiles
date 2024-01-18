@@ -9,10 +9,10 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Export
-# oh-my-zsh 
+# oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 # poetry
-export PATH="/Users/ads/.local/bin:$PATH"
+# export PATH="/Users/ads/.local/bin:$PATH"
 
 # NNN
 [ -f ~/.dotfiles/zshrc/.zshrc_nnn ] && source ~/.dotfiles/zshrc/.zshrc_nnn
@@ -29,9 +29,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Plugins
 plugins=(
 git
-poetry
 zsh-autosuggestions
 zsh-syntax-highlighting
+pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -60,16 +60,15 @@ alias docker_rmi_dangling="docker rmi \`docker images -qa -f 'dangling=true'\`"
 
 # Tmux
 alias tn='tmux new -s'
+alias ta='tmux attach -t'
 alias ide='~/.dotfiles/zshrc/tmux_script_ide'
 alias idepy='~/.dotfiles/zshrc/tmux_script_ide_py'
 
-# Poetry
-alias po='poetry'
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+### pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
