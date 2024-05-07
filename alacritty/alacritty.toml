@@ -1,0 +1,75 @@
+import = ["/Users/ads/.config/alacritty/themes/themes/dracula.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 17
+
+[font.normal]
+# family = "UbuntuMono Nerd Font"
+# family = "Source Code Pro"
+# family = "Hack Nerd Font Mono"
+# family = "MesloLGS Nerd Font Mono"
+# family = "DejaVuSansM Nerd Font Mono"
+# family = "Hack Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+# family = "Hack Nerd Font Mono"
+family = "MesloLGS Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Italic"
+
+
+[keyboard]
+bindings = [
+    { key = "Right", mods = "Alt", chars = "\u001BF" },
+    { key = "Left", mods = "Alt", chars = "\u001BB" },
+    { key = "F", mods = "Alt", action = "ToggleSimpleFullscreen" },
+    { key = "Q", mods = "Command", action = "None" },
+    { key = "Q", mods = "Control", action = "None" },
+]
+
+[window]
+# startup_mode = "SimpleFullscreen"
+decorations = "Buttonless"
+
+opacity = 0.7
+blur = true
+
+option_as_alt = "Both"
+
+[window.padding]
+x = 5
+y = 0
+
+[window.dimensions]
+columns = 120
+lines = 36
+
+[window.position]
+x = 170
+y = 150
+
+# themes:
+# - https://github.com/alacritty/alacritty-theme
+
+# fonts:
+# - preview: https://www.nerdfonts.com/font-downloads
+# - install: https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
+
+# config examples:
+# - https://gitlab.com/evertiro/dotfiles/blob/master/.config/alacritty/alacritty.yml
+# - https://fuchsia.googlesource.com/third_party/github.com/alacritty/alacritty/+/refs/tags/v0.10.0-rc2/alacritty.yml
+
+# x = 5
+# y = 0
+# fix bold rendering text by default on mac (run once)
+# ```bash
+# defaults write org.alacritty AppleFontSmoothing -int 0
+# ```
