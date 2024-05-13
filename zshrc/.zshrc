@@ -14,6 +14,18 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
+# Obsidian
+alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/ads_obsidian'
+# alias or='vim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/ads_obsidian/Daily/*.md'
+# alias ou='cd $HOME/notion-obsidian-sync-zazencodes && node batchUpload.js --lastmod-days-window 5'
+
+# Path shortcuts
+alias dot='cd $HOME/.dotfiles && zed .'
+
+# Dir list, nav
+alias pwdy="echo $(pwd) | pbcopy"
+alias cl="clear"
+
 # Neovim
 alias n='nvim'
 alias vim='nvim'
@@ -23,13 +35,9 @@ alias v='nvim'
 alias py=python3
 
 # LazyGit
-alias lg=lazygit
+alias lzg=lazygit
+alias lzd=lazydocker
 
-# Docker aliases
-alias dps='docker ps'
-alias docker_rm_all="docker rm \`docker ps -a -q\`"
-alias docker_rmi_all="docker rmi \`docker images -q\`"
-alias docker_rmi_dangling="docker rmi \`docker images -qa -f 'dangling=true'\`"
 
 # Tmux
 alias tn='tmux new -s'
@@ -124,3 +132,20 @@ alias cd="z"
 [ -f ~/.dotfiles/zshrc/.zshrc_nnn ] && source ~/.dotfiles/zshrc/.zshrc_nnn
 export NNN_PLUG='p:preview-tui'
 export NNN_FIFO=/tmp/nnn.fifo
+
+# ---- pyenv ----
+export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+# ---- Docker ----
+source /Users/ads/.docker/init-zsh.sh || true # Added by Docker Desktop
+# Docker aliases
+alias dps='docker ps'
+alias docker_rm_all="docker rm \`docker ps -a -q\`"
+alias docker_rmi_all="docker rmi \`docker images -q\`"
+alias docker_rmi_dangling="docker rmi \`docker images -qa -f 'dangling=true'\`"
