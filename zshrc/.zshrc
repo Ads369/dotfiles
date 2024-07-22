@@ -6,8 +6,9 @@ alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
 # Obsidian
-alias oo='cd $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/ads_obsidian'
-# alias or='vim $HOME/library/Mobile\ Documents/iCloud~md~obsidian/Documents/ads_obsidian/Daily/*.md'
+export OBSIDIAN_PATH="$HOME/library/Mobile Documents/iCloud~md~obsidian/Documents/ads_obsidian"
+alias oo='cd $OBSIDIAN_PATH'
+alias or='vim $OBSIDIAN_PATH/inbox/*.md'
 # alias ou='cd $HOME/notion-obsidian-sync-zazencodes && node batchUpload.js --lastmod-days-window 5'
 
 # Path shortcuts
@@ -73,7 +74,6 @@ setopt hist_verify
 # plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 plugins=(
     poetry
     poetry-venv
