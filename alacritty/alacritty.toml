@@ -1,8 +1,11 @@
+import = ["/Users/ads/.config/alacritty/themes/themes/dracula.toml"]
 
-import = ["/Users/alex/.config/alacritty/themes/themes/dracula.toml"]
+[env]
+TERM = "xterm-256color"
 
 [font]
-size = 15
+size = 17
+
 
 [font.normal]
 family = "DejaVuSansM Nerd Font Mono"
@@ -19,29 +22,40 @@ family = "DejaVuSansM Nerd Font Mono"
 # [font.normal]
 # family = "UbuntuMono Nerd Font"
 # family = "Source Code Pro"
+# family = "DejaVuSansM Nerd Font Mono"
+# family = "Hack Nerd Font Mono"
 # family = "MesloLGS NF"
+# family = "MesloLGS Nerd Font Mono"
+
 
 [keyboard]
 bindings = [
-  { key = "Right", mods = "Alt", chars = "\u001BF" },
-  { key = "Left",  mods = "Alt", chars = "\u001BB" },
-  { key = "F",     mods = "Alt", action = "ToggleSimpleFullscreen" },
-  { key = "Q",     mods = "Command",  action = "None" },
+    { key = "Right", mods = "Alt", chars = "\u001BF" },
+    { key = "Left", mods = "Alt", chars = "\u001BB" },
+    { key = "F", mods = "Alt", action = "ToggleSimpleFullscreen" },
+    { key = "Q", mods = "Command", action = "None" },
+    { key = "Space", mods = "Alt", action = "ToggleViMode" },
 ]
 
 [window]
 # startup_mode = "SimpleFullscreen"
+decorations = "Buttonless"
+
+opacity = 0.7
+blur = true
+
+option_as_alt = "Both"
 
 [window.padding]
 x = 5
 y = 0
 
 [window.dimensions]
-columns = 250
-lines = 90
+columns = 120
+lines = 36
 
 [window.position]
-x = 800
+x = 250
 y = 150
 
 # themes:
@@ -59,4 +73,3 @@ y = 150
 # ```bash
 # defaults write org.alacritty AppleFontSmoothing -int 0
 # ```
-

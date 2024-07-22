@@ -1,0 +1,22 @@
+#!/bin/bash
+session="ide"
+
+if ! tmux has-session -t $session; then
+  tmux new-session -d -s $session
+
+  window=1
+  tmux rename-window -t $session:$window 'git'
+  tmux send-keys -t $session:$window 'git fetch --prune --all' C-m
+
+  window=2
+  tmux new-window -t $session:$window -n 'vim'
+  tmux send-keys -t $session:$window 'nvim' C-m
+
+  window=3
+  tmux new-window -t $session:$window -n 'run'
+
+  window=4
+  tmux new-window -t $session:$window -n 'serve'
+
+fi
+  tmux attach-session -t $session
