@@ -23,18 +23,40 @@ alias vim='nvim'
 alias v='nvim'
 
 # Python
+# Note: use symlinks, e.g.
+# >>> ln -vs /opt/homebrew/bin/python3.9 ~/bin/python
+# >>> ln -vs /opt/homebrew/bin/pip3.9 ~/bin/pip
 alias py=python3
+alias python3.12=/opt/homebrew/bin/python3.12
+alias pip3.12=/opt/homebrew/bin/pip3.12
+alias pyv=$HOME/virtualenvs/adhoc/bin/python
+alias piv=$HOME/virtualenvs/adhoc/bin/pip
 
 # LazyGit
 alias lzg=lazygit
 alias lzd=lazydocker
-
 
 # Tmux
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias ide='~/.dotfiles/zshrc/tmux_script_ide'
 alias idepy='~/.dotfiles/zshrc/tmux_script_ide_py'
+
+# Git
+alias gits='git status'
+alias gita='git add -u'
+gitm() { git commit -m "$1" }
+alias gitp='git push'
+alias gitu='git commit -m "Update $(date +%F)"'
+alias gitq='git add -u && git commit -m "Update $(date +%F)" && git push'
+# alias gitc='aicommits' # requires aicommits installed (https://github.com/Nutlope/aicommits)
+
+
+# Jupyter
+alias jn='jupyter notebook --no-browser'
+alias jc='jupyter console'
+export JUPYTER_NOTEBOOK_STYLE='from IPython.display import HTML;HTML("<style>div.text_cell_render{font-size:130%;padding-top:50px;padding-bottom:50px}</style>")'
+alias jl='jupyter lab --core-mode' # Fix for M1 mac
 
 
 # ---- SETTINGS -----
@@ -54,6 +76,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 plugins=(
     poetry
+    poetry-venv
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
