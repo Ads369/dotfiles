@@ -7,8 +7,9 @@ Reference and Upstream from https://github.com/agalea91/.dotfiles
 ln -s ~/.dotfiles/alacritty ~/.config/alacritty
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf # For system
-ln -s ~/.dotfiles/tmux/tmux.conf ~/.dotfiles/.tmux.conf# For correct update
+ln -s ~/.dotfiles/tmux/tmux.conf ~/.dotfiles/.tmux.conf # For correct update
 ln -s ~/.dotfiles/zshrc/starship.toml ~/.config/starship.toml
+ln -s ~/.dotfiles/zshrc/.zshrc ~/.dotfiles/.zshrc
 ```
 
 ## Scripts
