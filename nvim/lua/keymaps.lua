@@ -45,12 +45,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "p", [["_dP]])
 
 -- yank to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- yank line to clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- delete without yanking
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- map Ctrl-c to Escape
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -75,4 +75,3 @@ vim.keymap.set("n", "<leader>ig", "A # pyright: ignore<Esc>")
 -- checkbox
 vim.keymap.set('n', '<leader>ty', [[:s/\[\s\]/[x]/<cr>]], { silent = true })
 vim.keymap.set('n', '<leader>tu', [[:s/\[x\]/[ ]/<cr>]], { silent = true })
-

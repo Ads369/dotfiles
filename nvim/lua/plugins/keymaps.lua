@@ -1,44 +1,49 @@
--- telescope
-vim.keymap.set("n", "<leader>fs", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>fp", ":Telescope git_files<cr>")
-vim.keymap.set("n", "<leader>fz", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fo", ":Telescope oldfiles<cr>")
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>")
+local wk = require("which-key")
+wk.add({
 
--- tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<cr>")
+    -- telescope
+    { "<leader>f",  group = "find" },
+    { "<leader>fb", ":Telescope buffers<cr>",                                          desc = "Buffers" },
+    { "<leader>fh", ":Telescope help_tags<cr>",                                        desc = "Help Tags" },
+    { "<leader>fo", ":Telescope oldfiles<cr>",                                         desc = "Old Files" },
+    { "<leader>fp", ":Telescope git_files<cr>",                                        desc = "Find Git Files" },
+    { "<leader>fs", ":Telescope find_files<cr>",                                       desc = "Find Files" },
+    { "<leader>fz", ":Telescope live_grep<cr>",                                        desc = "Live Grep" },
 
--- icon picker
-vim.keymap.set("n", "<leader>ic", ":IconPickerNormal<cr>", { noremap = true, silent = true })
+    -- tree
+    { "<leader>e",  ":NvimTreeFindFileToggle<cr>",                                     desc = "Toggle Nvim Tree" },
 
--- twilight
-vim.keymap.set("n", "<leader>il", ":Twilight<cr>")
+    -- icon picker
+    { "<leader>ic", ":IconPickerNormal<cr>",                                           desc = "Icon Picker" },
 
--- zen mode
-vim.keymap.set("n", "<leader>zm", ":ZenMode<cr>")
+    -- twilight
+    { "<leader>il", ":Twilight<cr>",                                                   desc = "Twilight" },
 
--- format code using LSP
--- vim.keymap.set("n", "<leader>pp", vim.lsp.buf.format)
+    -- zen mode
+    { "<leader>zm", ":ZenMode<cr>",                                                    desc = "Zen Mode" },
 
--- markdown preview
-vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<cr>")
+    -- format code using LSP
+    { "<leader>pp", "vim.lsp.buf.format",                                              desc = "Format LSP" },
 
--- nvim-comment
-vim.keymap.set({"n", "v"}, "<leader>/", ":CommentToggle<cr>")
+    -- markdown preview
+    { "<leader>mp", ":MarkdownPreviewToggle<cr>",                                      desc = "Markdown Preview" },
 
-------------------
--- goto-preview --
-------------------
---
--- note: lsp config (from lsp.lua)
--- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
--- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
--- nmap('gt', vim.lsp.buf.type_definition, 'Type [D]efinition')
--- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
---
-vim.keymap.set('n', '<leader>gd', ":lua require('goto-preview').goto_preview_definition()<CR>")
-vim.keymap.set('n', '<leader>gt', ":lua require('goto-preview').goto_preview_type_definition()<CR>")
-vim.keymap.set('n', '<leader>gi', ":lua require('goto-preview').goto_preview_implementation()<CR>")
-vim.keymap.set('n', '<leader>gp', ":lua require('goto-preview').close_all_win()<CR>")
+    -- nvim-comment
+    { "<leader>/",  ":CommentToggle<cr>",                                              desc = "Toggle Comment" },
 
+    ------------------
+    -- goto-preview --
+    ------------------
+    --
+    -- note: lsp config (from lsp.lua)
+    -- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    -- nmap('gt', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    -- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    { "<leader>g",  group = "goto-preview" },
+    { "<leader>gd", ":lua require('goto-preview').goto_preview_definition()<CR>",      desc = "Goto Definition" },
+    { "<leader>gi", ":lua require('goto-preview').goto_preview_implementation()<CR>",  desc = "Goto Implementation" },
+    { "<leader>gp", ":lua require('goto-preview').close_all_win()<CR>",                desc = "Close All Windows" },
+    { "<leader>gt", ":lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Type Definition" },
+
+})
