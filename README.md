@@ -1,10 +1,9 @@
 # dotfiles
 
-> “We become what we behold. We shape our tools and then our tools shape us”.
+Reference and Upstream from https://github.com/agalea91/dotfiles
 
 ## Configs
 ```bash
-git clone https://github.com/agalea91/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
