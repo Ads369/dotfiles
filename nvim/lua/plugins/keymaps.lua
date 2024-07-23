@@ -9,6 +9,7 @@ wk.add({
     { "<leader>fp", ":Telescope git_files<cr>",                                        desc = "Find Git Files" },
     { "<leader>fs", ":Telescope find_files<cr>",                                       desc = "Find Files" },
     { "<leader>fz", ":Telescope live_grep<cr>",                                        desc = "Live Grep" },
+    { "<leader>fk", ":Telescope keymaps<cr>",                                          desc = "Keymaps" },
 
     -- tree
     { "<leader>e",  ":NvimTreeFindFileToggle<cr>",                                     desc = "Toggle Nvim Tree" },
@@ -23,7 +24,7 @@ wk.add({
     { "<leader>zm", ":ZenMode<cr>",                                                    desc = "Zen Mode" },
 
     -- format code using LSP
-    { "<leader>pp", "vim.lsp.buf.format",                                              desc = "Format LSP" },
+    { "<leader>gf", "vim.lsp.buf.format",                                              desc = "Format LSP" },
 
     -- markdown preview
     { "<leader>mp", ":MarkdownPreviewToggle<cr>",                                      desc = "Markdown Preview" },
@@ -45,5 +46,11 @@ wk.add({
     { "<leader>gi", ":lua require('goto-preview').goto_preview_implementation()<CR>",  desc = "Goto Implementation" },
     { "<leader>gp", ":lua require('goto-preview').close_all_win()<CR>",                desc = "Close All Windows" },
     { "<leader>gt", ":lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Type Definition" },
+
+
+    -- codeium
+    { "<leader>cc", ":Codeium Chat<cr>",                                               desc = "Codeium Chat" },
+    { "<leader>ch", ":codeium#CycleOrComplete(1)<CR>",                                 desc = "Codeium Help" },
+
 
 })
