@@ -76,7 +76,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(
     poetry
-    poetry-venv
+    poetry-env
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -90,7 +90,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # ---- PATH -----
 # oh-my-zsh
-# export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 # poetry
 export PATH="/Users/ads/.local/bin:$PATH"
 

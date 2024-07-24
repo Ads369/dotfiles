@@ -56,7 +56,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'pyright', 'tsserver' }
+local servers = { 'pyright', 'tsserver', 'ruff' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -169,16 +169,16 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = "neorg" },
-        -- { name = "codeium" },
+        { name = "codeium" },
     },
-    -- formatting = {
-    --     format = require('lspkind').cmp_format({
-    --         mode = "symbol",
-    --         maxwidth = 50,
-    --         ellipsis_char = '...',
-    --         symbol_map = { Codeium = "", }
-    --     })
-    -- },
+    formatting = {
+        format = require('lspkind').cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            ellipsis_char = '...',
+            symbol_map = { Codeium = "", }
+        })
+    },
 }
 
 vim.api.nvim_create_autocmd('FileType', {
