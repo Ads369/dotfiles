@@ -17,9 +17,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
-      colorscheme = "solarized-osaka",
-    } },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        colorscheme = "solarized-osaka",
+      },
+    },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -52,6 +56,4 @@ require("lazy").setup({
       },
     },
   },
-
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 })
