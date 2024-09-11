@@ -1,0 +1,9 @@
+#  Config for Cisco Any Connect
+function cisco_connect() {
+  CON_STR="connect \"vpn-ra.gov74.ru\"\aleksanrodds\n$(/usr/bin/security find-generic-password -w -a "vpn-ra.gov74.ru" -s aleksanrodds)\n2\ny\nexit"
+  # Uncomment to debug
+  echo $CON_STR
+  echo $CON_STR | /opt/cisco/anyconnect/bin/vpn -s
+}
+alias cisco="cisco_connect"
+alias nocisco='/opt/cisco/anyconnect/bin/vpn disconnect'

@@ -42,11 +42,12 @@ bindings = [
 [window]
 startup_mode = "SimpleFullscreen"
 decorations = "None"
+dynamic_padding = true
 
 opacity = 0.9
 blur = true
 
-# option_as_alt = "Both"
+option_as_alt = "Both"
 
 [window.padding]
 x = 5

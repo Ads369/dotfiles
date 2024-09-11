@@ -71,7 +71,15 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        python = {
+          analysis = {
+            autoImportCompletions = true,
+            typeCheckingMode = "on",
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = "workspace", -- "openFilesOnly",
+          },
+        },
       },
     },
   },
@@ -95,6 +103,11 @@ return {
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
         tsserver = {},
+        python = {
+          analysis = {
+            autoImportCompletions = true,
+          },
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
