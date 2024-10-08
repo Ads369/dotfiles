@@ -21,3 +21,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Setting Ollama setting for Obsidian
 export OLLAMA_ORIGINS=app://obsidian.md* ollama serve
+
+# For git-status
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"

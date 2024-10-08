@@ -19,6 +19,7 @@ alias pwdy="echo $(pwd) | pbcopy"
 alias cl="clear"
 
 # Neovim
+export EDITOR=nvim
 alias n='nvim'
 alias vim='nvim'
 alias v='nvim'

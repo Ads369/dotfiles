@@ -1,0 +1,12 @@
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+-- Add any additional autocmds here
+
+-- Helper function for transparency formatting
+-- local alpha = function()
+--     return string.format("%x", math.floor(255 * vim.g.neovide_transparency_point or 0.8))
+-- end
+-- -- Set transparency and background color (title bar color)
+-- vim.g.neovide_transparency = 0.8
+-- vim.g.neovide_transparency_point = 0.8
+-- vim.g.neovide_window_blurred = true
