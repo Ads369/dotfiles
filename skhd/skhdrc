@@ -1,0 +1,36 @@
+# For change setting: skhd --restart-service
+
+# Show date
+ralt - d : osascript ~/.config/skhd/applescripts/pop.scpt
+
+# Close notifications
+ralt - n : osascript ~/.config/skhd/applescripts/notifications.scpt
+
+# APPS #
+
+# Safari
+rcmd - s : open -a "Safari"
+
+# Telegram
+rcmd - t : open -a "Telegram"
+
+# Obsidian
+rcmd - o : open -a "Obsidian"
+
+# Ghostty
+rcmd - g : open -a "/Applications/Ghostty.app"
+
+# WezTerm
+rcmd - w : open -a "WezTerm"
+
+# Zed
+rcmd - z : open -a "Zed"
+
+# DeepL
+rcmd - d : open -a "DeepL"
+
+# KeePass
+rcmd - k : open -a "KeePassXC"
+
+# Reminders
+rcmd - r : open -a "Reminders"

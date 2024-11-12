@@ -1,0 +1,165 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `zed: Open Default Settings` command
+// from the command palette
+{
+  // ---- KEYMAP
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  // "vim": {
+  //   "leader": " ",
+  //   "use_multiline_find": true
+  // },
+  // "cursor_blink": false,
+  "relative_line_numbers": true,
+  "command_aliases": {
+    "W": "w",
+    "Wq": "wq",
+    "Q": "q"
+  },
+
+  // ---- UI
+  "ui_font_size": 16,
+  "buffer_font_size": 18,
+  "buffer_font_family": "Zed Plex Mono",
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Dark",
+    "dark": "Catppuccin Mocha"
+  },
+  // Transparent for theme
+  // need add ff for each color in theme
+  "experimental.theme_overrides": {
+    "background.appearance": "blurred"
+  },
+  "terminal": {
+    "font_family": "ZedMono Nerd Font Mono"
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "always_treat_brackets_as_autoclosed": true,
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "performance": { "show_in_status_bar": true },
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": true
+    }
+  },
+
+  // ---- AI
+  "assistant": {
+    "version": "2",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    }
+  },
+
+  // ---- Inline completions
+  "show_inline_completions": false,
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
+
+  "file_types": {
+    "env": [".env*", "env*"]
+  },
+
+  // Codding
+  "preferred_line_length": 80,
+  "languages": {
+    "Python": {
+      // "show_inline_completions": true,
+      "show_inline_completions": false,
+      "preferred_line_length": 82,
+      "wrap_guides": [82],
+      "format_on_save": "off",
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        },
+        {
+          "code_actions": {
+            "source.fixAll.ruff": false,
+            "source.organizeImports.ruff": true
+          }
+        }
+      ],
+      "language_servers": ["pyright", "ruff"]
+    },
+    "HTML": {
+      "format_on_save": "off"
+    },
+    "SQL": {
+      "formatter": "prettier",
+      "prettier": {
+        "plugins": ["prettier-plugin-sql"],
+        "allowed": true,
+        "parser": "sql"
+      },
+      "tab_size": 2
+    }
+  },
+
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          // "diagnosticMode": "workspace",
+          "diagnostcMode": "project",
+          "typeCheckingMode": "strict"
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    },
+    "snippet-completion-server": {
+      "initialization_options": {
+        "max_completion_items": 20,
+        "snippets_first": true,
+        "feature_words": true,
+        "feature_snippets": true,
+        "feature_paths": true,
+        "feature_unicode_input": true
+      }
+    },
+    "typos": {
+      "initialization_options": {
+        // Path to your typos config file, .typos.toml by default.
+        "config": ".typos.toml",
+        // Path to your typos-lsp executable, takes $PATH into account.
+        "path": "typos-lsp",
+        // Diagnostic severity within Zed. "Error" by default, can be:
+        // "Error", "Hint", "Information", "Warning"
+        "diagnosticSeverity": "Error",
+        // Minimum logging level for the LSP, displayed in Zed's logs. "info" by default, can be:
+        // "debug", "error", "info", "off", "trace", "warn"
+        "logLevel": "info",
+        // Traces the communication between ZED and the language server. Recommended for debugging only. "off" by default, can be:
+        // "messages", "off", "verbose"
+        "trace.server": "off"
+      }
+    }
+    // "ruff": {
+    //   "initialization_options": {
+    //     "settings": {
+    //       "lineLength": 82
+    //     }
+    //   }
+    // }
+  }
+}

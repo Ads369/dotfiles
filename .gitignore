@@ -3,4 +3,6 @@ atuin/config.toml
 node_modules
 raycast
 zed/conversations
-zed/embeddings/semantic-index-db.0.mdb
+zed/embeddings
+package-lock.json
+package.json

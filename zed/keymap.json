@@ -1,0 +1,74 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: Open Default Keymap`
+// from the command palette.
+[
+  // {
+  //   "context": "Editor || Workspace || SharedScreen || EmptyPane && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+  //   "bindings": {
+  //     "space f": "file_finder::Toggle"
+  //   }
+  // },
+  // {
+  //   // remap jk in insert mode to escape.,
+  //   "context": "vim_mode == insert",
+  //   "bindings": {
+  //     "j k": "vim::NormalBefore",
+  //     "k j": "vim::NormalBefore",
+  //     "j j": "vim::NormalBefore",
+  //     "k k": "vim::NormalBefore"
+  //   }
+  // },
+  {
+    // Moving through panels via vim buttons
+    "context": "Dock",
+    "bindings": {
+      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    // Move by SubWords
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      // "w": "vim::NextSubwordStart",
+      // "b": "vim::PreviousSubwordStart",
+      // "e": "vim::NextSubwordEnd",
+      // "g e": "vim::PreviousSubwordEnd"
+      //
+      // "g e": "vim::NextWordEnd",
+      "w": "vim::NextSubwordStart"
+    }
+  },
+  {
+    // Vim plugin add surround
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
+    }
+  },
+  {
+    // Now dont work Inline Complition by key
+    "context": "Editor",
+    "bindings": {
+      "ctrl-\\": "editor::ShowInlineCompletion"
+    }
+  },
+  {
+    // netrw compatibility
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "t": "workspace::OpenInTerminal"
+    }
+  }
+]

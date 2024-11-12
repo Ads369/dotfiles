@@ -1,0 +1,82 @@
+general.import = [
+    # "/Users/ads/.config/alacritty/themes/themes/catppuccin-mocha.toml"
+    # "/Users/ads/.config/alacritty/themes/themes/catppuccin.toml"
+    "/Users/ads/.config/alacritty/themes/themes/monokai_pro.toml",
+    # "/Users/ads/.config/alacritty/themes/themes/dracula.toml"
+    # "/Users/ads/.config/alacritty/themes/themes/solarized_osaka.toml.toml",
+]
+general.live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 18
+
+[font.normal]
+family = "DejaVuSansM Nerd Font Mono"
+# style = "Regular"
+
+[font.bold]
+family = "DejaVuSansM Nerd Font Mono"
+# style = "Bold"
+
+[font.italic]
+family = "DejaVuSansM Nerd Font Mono"
+# style = "Italic"
+
+# [font.normal]
+# family = "UbuntuMono Nerd Font"
+# family = "Source Code Pro"
+# family = "DejaVuSansM Nerd Font Mono"
+# family = "Hack Nerd Font Mono"
+# family = "MesloLGS NF"
+# family = "MesloLGS Nerd Font Mono"
+
+
+[keyboard]
+bindings = [
+    { key = "Right", mods = "Alt", chars = "\u001BF" },
+    { key = "Left", mods = "Alt", chars = "\u001BB" },
+    { key = "F", mods = "Alt", action = "ToggleSimpleFullscreen" },
+    { key = "Q", mods = "Command", action = "None" },
+    { key = "Space", mods = "Alt", action = "ToggleViMode" },
+    { key = "Space", mods = "Control", action = "ToggleViMode" },
+]
+
+[window]
+# startup_mode = "SimpleFullscreen"
+# decorations = "None"
+# decorations = "transparent"
+dynamic_padding = true
+opacity = 0.75
+blur = true
+option_as_alt = "Both"
+
+[window.padding]
+x = 5
+y = 0
+
+[window.dimensions]
+columns = 120
+lines = 36
+
+[window.position]
+x = 250
+y = 150
+
+# themes:
+# - https://github.com/alacritty/alacritty-theme
+
+# fonts:
+# - preview: https://www.nerdfonts.com/font-downloads
+# - install: https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
+
+# config examples:
+# - https://gitlab.com/evertiro/dotfiles/blob/master/.config/alacritty/alacritty.yml
+# - https://fuchsia.googlesource.com/third_party/github.com/alacritty/alacritty/+/refs/tags/v0.10.0-rc2/alacritty.yml
+
+# fix bold rendering text by default on mac (run once)
+# ```bash
+# defaults write org.alacritty AppleFontSmoothing -int 0
+# ```
