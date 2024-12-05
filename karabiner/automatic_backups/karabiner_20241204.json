@@ -376,7 +376,6 @@
                     },
                     {
                         "description": "Left Control as Fn if alone",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

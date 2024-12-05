@@ -40,8 +40,6 @@
             pkgs.nushell
             pkgs.oh-my-zsh
             pkgs.pipenv
-            pkgs.postgresql
-            pkgs.pyenv
             pkgs.python3
             pkgs.rainfrog # sql manager
             pkgs.ripgrep
@@ -56,6 +54,7 @@
             pkgs.zellij # new tmux
             pkgs.zoxide # new cd
             pkgs.harper
+            pkgs.poetry
           ];
 
           #https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#patched-fonts
@@ -80,16 +79,22 @@
             enable = true;
             brews = [
               # "mas" # Mac App Store command-line interface
+              "pyenv"
+              "postgresql"
               "node"
               "prettier"
               "zsh-autosuggestions"
               "zsh-syntax-highlighting"
+              "harfbuzz" # fix for ffmpeg
+              "ffmpeg"
+              "uv"
             ];
             casks = [
+              "appcleaner"
               "dbeaver-community"
               "deepl"
-              "hiddenbar"
               "iina"
+              "jordanbaird-ice"
               "karabiner-elements"
               "keepassxc"
               "keycastr"
@@ -99,6 +104,7 @@
               "shottr"
               "the-unarchiver"
               "visual-studio-code"
+              "webtorrent"
               "wezterm"
               "zed"
             ];
@@ -163,6 +169,14 @@
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
           programs.zsh.enable = true; # default shell on catalina
+
+          # programs.git = {
+          #   enable = true;
+          #   userName = "Leigh Gable";
+          #   userEmail = "leighgable@gmail.com";
+          # };
+
+
         };
 
     in

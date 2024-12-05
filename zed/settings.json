@@ -23,13 +23,19 @@
   },
 
   // ---- UI
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.5,
+    "border_size": 0.4,
+    "magnification": 1.5
+  },
+
   "ui_font_size": 16,
   "buffer_font_size": 18,
   "buffer_font_family": "Zed Plex Mono",
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Dark",
-    "dark": "Catppuccin Mocha"
+    "light": "Zedokai Darker Classic",
+    "dark": "Zedokai Darker Classic"
   },
   // Transparent for theme
   // need add ff for each color in theme
@@ -55,6 +61,10 @@
     "inline_blame": {
       "show_commit_summary": true
     }
+  },
+
+  "project_panel": {
+    "git_status": true
   },
 
   // ---- AI

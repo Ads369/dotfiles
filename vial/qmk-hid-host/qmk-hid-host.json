@@ -1,0 +1,10 @@
+{
+  "devices": [
+      {
+        "name": "K:03 PRO 65mm",
+        "productId": "0x00a1"
+      }
+  ],
+  "layouts": ["ABC", "Russian"],
+  "reconnectDelay": 5000
+}

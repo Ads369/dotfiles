@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "Mouse keys (xgwang.me) by ads",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -320,7 +319,6 @@
                     },
                     {
                         "description": "Press twice caps_lock to activate caps_lock & otherwise held_down and use as CTRL",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -376,7 +374,6 @@
                     },
                     {
                         "description": "Left Control as Fn if alone",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -391,40 +388,11 @@
                                 ],
                                 "to_if_alone": [{ "key_code": "fn" }],
                                 "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "fn" }],
-                                "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 161,
-                        "vendor_id": 57638
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                        }
-                    ]
-                }
-            ],
             "name": "Main",
             "selected": true,
             "virtual_hid_keyboard": {

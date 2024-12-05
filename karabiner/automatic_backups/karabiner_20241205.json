@@ -320,7 +320,6 @@
                     },
                     {
                         "description": "Press twice caps_lock to activate caps_lock & otherwise held_down and use as CTRL",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -376,7 +375,6 @@
                     },
                     {
                         "description": "Left Control as Fn if alone",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

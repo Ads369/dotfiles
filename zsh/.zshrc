@@ -70,6 +70,9 @@ alias nn='nvim .'
 # VI Mode!!!
 bindkey jj vi-cmd-mode
 
+# Zed
+alias zz='zed .'
+
 
 # Python
 # Note: use symlinks, e.g.
@@ -185,12 +188,17 @@ eval "$(zoxide init zsh)"
 
 
 # ---- pyenv ----
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PATH:$PYENV_ROOT/bin"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)"
 
 
 # ---- Docker ----
@@ -228,3 +236,5 @@ alias  drs="darwin-rebuild switch --flake ~/dotfiles/nix#ads"
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 	 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
+
+. "$HOME/.local/bin/env"

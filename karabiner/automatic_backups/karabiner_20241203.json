@@ -376,7 +376,6 @@
                     },
                     {
                         "description": "Left Control as Fn if alone",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -386,20 +385,6 @@
                                 "to": [
                                     {
                                         "key_code": "left_control",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "fn" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
                                         "lazy": true
                                     }
                                 ],

@@ -34,3 +34,6 @@ rcmd - k : open -a "KeePassXC"
 
 # Reminders
 rcmd - r : open -a "Reminders"
+
+# Yandex
+rcmd - y : open -a "Yandex"
