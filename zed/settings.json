@@ -91,7 +91,7 @@
   "languages": {
     "Python": {
       // "show_inline_completions": true,
-      "show_inline_completions": false,
+      "show_inline_completions": true,
       "preferred_line_length": 82,
       "wrap_guides": [82],
       "format_on_save": "off",

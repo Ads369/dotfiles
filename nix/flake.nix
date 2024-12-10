@@ -35,6 +35,7 @@
             pkgs.lazygit
             pkgs.mkalias
             pkgs.neovim
+            pkgs.nil
             pkgs.nixd
             pkgs.nixfmt-rfc-style
             pkgs.nushell
