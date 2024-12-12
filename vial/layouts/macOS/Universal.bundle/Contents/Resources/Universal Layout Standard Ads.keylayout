@@ -1,8 +1,8 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Last edited by Ukelele version 396 on 2024-12-11 at 17:10 (GMT+5)-->
+<!--Last edited by Ukelele version 396 on 2024-12-11 at 22:29 (GMT+5)-->
 <!--Created by Ukelele version 1.8 on 2008-10-24 at 13:25 (YEKST)-->
-<keyboard group="126" id="-23074" name="Universal Layout Standard Ads" maxout="2">
+<keyboard group="126" id="-694" name="Universal Layout Standard Ads" maxout="2">
     <layouts>
         <layout first="0" last="17" mapSet="16c" modifiers="f4"/>
         <layout first="18" last="18" mapSet="994" modifiers="f4"/>
@@ -51,7 +51,7 @@
             <key code="7" output="x"/>
             <key code="8" output="c"/>
             <key code="9" output="v"/>
-            <key code="10" output="`"/>
+            <key code="10" output="&#x003C;"/>
             <key code="11" output="b"/>
             <key code="12" output="q"/>
             <key code="13" output="w"/>
@@ -91,7 +91,7 @@
             <key code="47" output="."/>
             <key code="48" output="&#x0009;"/>
             <key code="49" output=" "/>
-            <key code="50" output="&#x0027;"/>
+            <key code="50" output="`"/>
             <key code="51" output="&#x0008;"/>
             <key code="53" output="&#x001B;"/>
             <key code="64" output="&#x0010;"/>
@@ -157,7 +157,7 @@
             <key code="7" output="X"/>
             <key code="8" output="C"/>
             <key code="9" output="V"/>
-            <key code="10" output="~"/>
+            <key code="10" output="&#x003E;"/>
             <key code="11" output="B"/>
             <key code="12" output="Q"/>
             <key code="13" output="W"/>
@@ -197,7 +197,7 @@
             <key code="47" output=":"/>
             <key code="48" output="&#x0009;"/>
             <key code="49" output=" "/>
-            <key code="50" output="&#x0022;"/>
+            <key code="50" output="~"/>
             <key code="51" output="&#x0008;"/>
             <key code="53" output="&#x001B;"/>
             <key code="64" output="&#x0010;"/>
@@ -297,7 +297,7 @@
             <key code="41" output="ж"/>
             <key code="42" output="/"/>
             <key code="43" output=","/>
-            <key code="44" output="ю"/>
+            <key code="44" output="/"/>
             <key code="45" output="т"/>
             <key code="46" output="ь"/>
             <key code="47" output="."/>
@@ -403,7 +403,7 @@
             <key code="41" output="Ж"/>
             <key code="42" output="|"/>
             <key code="43" output=";"/>
-            <key code="44" output="Ю"/>
+            <key code="44" output="?"/>
             <key code="45" output="Т"/>
             <key code="46" output="Ь"/>
             <key code="47" output=":"/>
