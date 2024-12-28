@@ -91,7 +91,7 @@
   "languages": {
     "Python": {
       // "show_inline_completions": true,
-      "show_inline_completions": true,
+      "show_inline_completions": false,
       "preferred_line_length": 82,
       "wrap_guides": [82],
       "format_on_save": "off",
@@ -118,7 +118,8 @@
       "prettier": {
         "plugins": ["prettier-plugin-sql"],
         "allowed": true,
-        "parser": "sql"
+        "parser": "postgresql"
+        // "parser": "sql"
       },
       "tab_size": 2
     }
