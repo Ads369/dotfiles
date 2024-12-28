@@ -18,7 +18,8 @@ rcmd - t : open -a "Telegram"
 rcmd - o : open -a "Obsidian"
 
 # Ghostty
-rcmd - g : open -a "/Applications/Ghostty.app"
+# rcmd - g : open -a "/Applications/Ghostty.app"
+rcmd - g : open -a "Ghostty"
 
 # WezTerm
 rcmd - w : open -a "WezTerm"

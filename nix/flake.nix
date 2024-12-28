@@ -91,9 +91,11 @@
               "uv"
             ];
             casks = [
+              "amneziavpn"
               "appcleaner"
               "dbeaver-community"
               "deepl"
+              "ghostty"
               "iina"
               "jordanbaird-ice"
               "karabiner-elements"
