@@ -38,9 +38,7 @@
             pkgs.nil
             pkgs.nixd
             pkgs.nixfmt-rfc-style
-            pkgs.nushell
             pkgs.oh-my-zsh
-            pkgs.pipenv
             pkgs.python3
             pkgs.rainfrog # sql manager
             pkgs.ripgrep
@@ -49,12 +47,11 @@
             pkgs.starship
             pkgs.stow
             pkgs.thefuck
-            pkgs.wezterm
             pkgs.xh # test api
             pkgs.yazi # file mamager
             pkgs.zellij # new tmux
             pkgs.zoxide # new cd
-            pkgs.harper
+            pkgs.harper # grammary
             pkgs.poetry
           ];
 
@@ -80,15 +77,22 @@
             enable = true;
             brews = [
               # "mas" # Mac App Store command-line interface
-              "pyenv"
-              "postgresql"
+              "ffmpeg"
+              "harfbuzz" # fix for ffmpeg
               "node"
+              "openssl" # req for pyenv
+              "postgresql"
               "prettier"
+              "pyenv"
+              "readline" # req for pyenv
+              "sqlite3" # req for pyenv
+              "tcl-tk@8" # req for pyenv
+              "uv" # alternative poetry
+              "wget"
+              "xz" # req for pyenv
+              "zlib" # req for pyenv
               "zsh-autosuggestions"
               "zsh-syntax-highlighting"
-              "harfbuzz" # fix for ffmpeg
-              "ffmpeg"
-              "uv"
             ];
             casks = [
               "amneziavpn"
@@ -102,6 +106,7 @@
               "keepassxc"
               "keycastr"
               "maccy"
+              "nikitabobko/tap/aerospace"
               "obsidian"
               "raycast"
               "shottr"
