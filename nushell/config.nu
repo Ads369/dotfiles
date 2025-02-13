@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = "0.95.0"
+# version = "0.99.1"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -47,7 +47,7 @@ let dark_theme = {
     shape_flag: blue_bold
     shape_float: purple_bold
     # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: white bg: red attr: b}
+    shape_garbage: { fg: white bg: red attr: b }
     shape_glob_interpolation: cyan_bold
     shape_globpattern: cyan_bold
     shape_int: purple_bold
@@ -114,7 +114,8 @@ let light_theme = {
     shape_flag: blue_bold
     shape_float: purple_bold
     # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: white bg: red attr: b}
+    shape_garbage: { fg: white bg: red attr: b }
+    shape_glob_interpolation: cyan_bold
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
@@ -139,8 +140,14 @@ let light_theme = {
     shape_raw_string: light_purple
 }
 
+# External completer example
+# let carapace_completer = {|spans|
+#     carapace $spans.0 nushell ...$spans | from json
+# }
+
+# The default config record. This is where much of your global configuration is setup.
 $env.config = {
-    show_banner: false
+    show_banner: true # true or false to enable or disable the welcome banner at startup
 
     ls: {
         use_ls_colors: true # use the LS_COLORS environment variable to colorize output
@@ -166,6 +173,14 @@ $env.config = {
     }
 
     error_style: "fancy" # "fancy" or "plain" for screen reader-friendly error messages
+
+    # Whether an error message should be printed if an error of a certain kind is triggered.
+    display_errors: {
+        exit_code: false # assume the external command prints an error message
+        # Core dump errors are always printed, and SIGPIPE never triggers an error.
+        # The setting below controls message printing for termination by all other signals.
+        termination_signal: true
+    }
 
     # datetime_format determines what a datetime rendered in the shell would look like.
     # Behavior without this configuration point will be to "humanize" the datetime display,
@@ -199,6 +214,7 @@ $env.config = {
         quick: true    # set this to false to prevent auto-selecting completions when only one remains
         partial: true    # set this to false to prevent partial filling of the prompt
         algorithm: "prefix"    # prefix or fuzzy
+        sort: "smart" # "smart" (alphabetical for prefix matching, fuzzy score for fuzzy matching) or "alphabetical"
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
@@ -213,19 +229,18 @@ $env.config = {
     }
 
     cursor_shape: {
-        emacs: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
+        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
         vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
         vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
-    use_grid_icons: true
-    footer_mode: "25" # always, never, number_of_rows, auto
+    footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
-    buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
+    buffer_editor: null # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
-    edit_mode: vi # emacs, vi
+    edit_mode: emacs # emacs, vi
     shell_integration: {
         # osc2 abbreviates the path if in the home_dir, sets the tab/window title, shows the running command in the tab/window title
         osc2: true
@@ -247,7 +262,7 @@ $env.config = {
         # 633;B - Mark prompt end
         # 633;C - Mark pre-execution
         # 633;D;exit - Mark execution finished with exit code
-        # 633;E - NOT IMPLEMENTED - Explicitly set the command line with an optional nonce
+        # 633;E - Explicitly set the command line with an optional nonce
         # 633;P;Cwd=<path> - Mark the current working directory and communicate it to the terminal
         # and also helps with the run recent menu in vscode
         osc633: true
@@ -389,9 +404,16 @@ $env.config = {
             }
         }
         {
+            name: completion_previous_menu
+            modifier: shift
+            keycode: backtab
+            mode: [emacs, vi_normal, vi_insert]
+            event: { send: menuprevious }
+        }
+        {
             name: ide_completion_menu
             modifier: control
-            keycode: char_n
+            keycode: space
             mode: [emacs vi_normal vi_insert]
             event: {
                 until: [
@@ -414,13 +436,6 @@ $env.config = {
             keycode: f1
             mode: [emacs, vi_insert, vi_normal]
             event: { send: menu name: help_menu }
-        }
-        {
-            name: completion_previous_menu
-            modifier: shift
-            keycode: backtab
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: menuprevious }
         }
         {
             name: next_page_menu
@@ -604,6 +619,18 @@ $env.config = {
             event: { edit: movetolineend }
         }
         {
+            name: move_down
+            modifier: control
+            keycode: char_n
+            mode: [emacs, vi_normal, vi_insert]
+            event: {
+                until: [
+                    { send: menudown }
+                    { send: down }
+                ]
+            }
+        }
+        {
             name: move_up
             modifier: control
             keycode: char_p
@@ -612,18 +639,6 @@ $env.config = {
                 until: [
                     { send: menuup }
                     { send: up }
-                ]
-            }
-        }
-        {
-            name: move_down
-            modifier: control
-            keycode: char_t
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    { send: menudown }
-                    { send: down }
                 ]
             }
         }
@@ -741,7 +756,7 @@ $env.config = {
             modifier: control
             keycode: char_k
             mode: emacs
-            event: { edit: cuttoend }
+            event: { edit: cuttolineend }
         }
         {
             name: cut_line_from_start
@@ -846,8 +861,6 @@ $env.config = {
         }
         # The following bindings with `*system` events require that Nushell has
         # been compiled with the `system-clipboard` feature.
-        # This should be the case for Windows, macOS, and most Linux distributions
-        # Not available for example on Android (termux)
         # If you want to use the system clipboard for visual selection or to
         # paste directly, uncomment the respective lines and replace the version
         # using the internal clipboard.
@@ -883,59 +896,3 @@ $env.config = {
         }
     ]
 }
-
-def --env cx [arg] {
-    cd $arg
-    ls -l
-}
-
-alias l = ls --all
-alias c = clear
-alias ll = ls -l
-alias lt = eza --tree --level=2 --long --icons --git
-alias v = nvim
-alias hms = /nix/store/6kc5srg83nkyg21am089xx7pvq44kn2c-home-manager/bin/home-manager switch
-alias as = aerospace
-
-def ff [] {
-    aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
-}
-
-
-# Git
-alias gc = git commit -m
-alias gca = git commit -a -m
-alias gp = git push origin HEAD
-alias gpu = git pull origin
-alias gst = git status
-alias glog = git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit
-alias gdiff = git diff
-alias gco = git checkout
-alias gb = git branch
-alias gba = git branch -a
-alias gadd = git add
-alias ga = git add -p
-alias gcoall = git checkout -- .
-alias gr = git remote
-alias gre = git reset
-
-# K8s
-alias k = kubectl
-alias ka = kubectl apply -f
-alias kg = kubectl get
-alias kd = kubectl describe
-alias kdel = kubectl delete
-alias kl = kubectl logs
-alias kgpo = kubectl get pod
-alias kgd = kubectl get deployments
-alias kc = kubectx
-alias kns = kubens
-alias kl = kubectl logs -f
-alias ke = kubectl exec -it
-
-source ~/.config/nushell/env.nu
-source ~/.zoxide.nu
-source ~/.cache/carapace/init.nu
-source ~/.local/share/atuin/init.nu
-use ~/.cache/starship/init.nu
-
