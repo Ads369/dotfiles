@@ -5,5 +5,14 @@ mouse-hide-while-typing = true
 window-decoration = true
 # keybind = global:cmd+/=toggle_quick_terminal
 keybind = global:cmd+escape=toggle_quick_terminal
+
+keybind = cmd+s=write_scrollback_file:paste
+keybind = cmd+x=write_scrollback_file:open
+
 macos-option-as-alt = true
 background-opacity = 0.7
+
+macos-titlebar-style = tabs
+
+window-width = 112
+window-height = 28
