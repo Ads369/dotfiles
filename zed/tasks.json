@@ -39,5 +39,25 @@
     //         }
     //     }
     "shell": "system"
+  },
+  {
+    "label": "Python: Clean Project",
+    "description": "Удаляет все временные файлы, кэши и артефакты сборки Python",
+    "command": "rm -rf .pytest_cache .ruff_cache __pycache__ dist build; find . -type d -name '__pycache__' -exec rm -rf {} +; find . -type d -name '*.egg-info' -exec rm -rf {} +",
+    "use_new_terminal": true,
+    "reveal": "always",
+    "hide": "never"
+  },
+  {
+    "label": "Python: RUN current file (uv)",
+    "command": "uv",
+    "args": ["run", "python", "$ZED_FILE"],
+    "use_new_terminal": true
+  },
+  {
+    "label": "Python: TEST current file (uv)",
+    "command": "uv",
+    "args": ["run", "pytest", "$ZED_FILE", "-vs"],
+    "use_new_terminal": true
   }
 ]
