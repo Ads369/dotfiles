@@ -99,6 +99,9 @@ alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2  --icons --git"
 
+# UV
+export PATH="$HOME/.local/bin:$PATH"
+
 # SEC STUFF
 alias gobust='gobuster dir --wordlist ~/security/wordlists/diccnoext.txt --wildcard --url'
 alias dirsearch='python dirsearch.py -w db/dicc.txt -b -u'
