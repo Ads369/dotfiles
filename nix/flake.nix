@@ -21,84 +21,70 @@
         {
           nixpkgs.config.allowUnfree = true; # Allow not OpesnSource
 
+
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           # NIX pkgs
           environment.systemPackages = [
+            # pkgs.thefuck
             pkgs.bat
             pkgs.btop
             pkgs.eza
             pkgs.fd
             pkgs.fzf
+            pkgs.harper # grammary
             pkgs.jq # json
             pkgs.lazydocker
             pkgs.lazygit
+            pkgs.libffi
             pkgs.mkalias
             pkgs.neovim
+            pkgs.nerd-fonts._0xproto
+            pkgs.nerd-fonts.dejavu-sans-mono
+            pkgs.nerd-fonts.fira-code
+            pkgs.nerd-fonts.hack
+            pkgs.nerd-fonts.meslo-lg
+            pkgs.nerd-fonts.ubuntu-mono
+            pkgs.nerd-fonts.zed-mono
             pkgs.nil
             pkgs.nixd
             pkgs.nixfmt-rfc-style
             pkgs.oh-my-zsh
-            pkgs.python3
+            pkgs.poetry
+            pkgs.pre-commit
             pkgs.rainfrog # sql manager
             pkgs.ripgrep
             pkgs.ruff
             pkgs.skhd
             pkgs.starship
             pkgs.stow
-            pkgs.thefuck
             pkgs.xh # test api
             pkgs.yazi # file mamager
             pkgs.zellij # new tmux
             pkgs.zoxide # new cd
-            pkgs.harper # grammary
-            pkgs.poetry
-          ];
-
-          #https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#patched-fonts
-          fonts.packages = with pkgs; [
-            (nerdfonts.override {
-              fonts = [
-                "FiraCode"
-                "0xProto"
-                "DejaVuSansMono"
-                "ZedMono"
-                "UbuntuMono"
-                "SourceCodePro"
-                "DejaVuSansMono"
-                "Hack"
-                "Meslo"
-              ];
-            })
           ];
 
           # HomeBrew
           homebrew = {
             enable = true;
             brews = [
-              # "mas" # Mac App Store command-line interface
               "ffmpeg"
+              "font-zed-mono-nerd-font"
               "harfbuzz" # fix for ffmpeg
+              "kubectl"
               "node"
-              "openssl" # req for pyenv
               "postgresql"
               "prettier"
-              "pyenv"
-              "readline" # req for pyenv
-              "sqlite3" # req for pyenv
-              "tcl-tk@8" # req for pyenv
+              "thefuck"
               "uv" # alternative poetry
               "wget"
-              "xz" # req for pyenv
-              "zlib" # req for pyenv
               "zsh-autosuggestions"
               "zsh-syntax-highlighting"
+              # "mas" # Mac App Store command-line interface
             ];
             casks = [
-              "amneziavpn"
               "appcleaner"
               "dbeaver-community"
-              "deepl"
               "ghostty"
               "iina"
               "jordanbaird-ice"
@@ -140,7 +126,7 @@
               rm -rf /Applications/Nix\ Apps
               mkdir -p /Applications/Nix\ Apps
               find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-              while read src; do
+              while read -r src; do
                 app_name=$(basename "$src")
                 echo "copying $src" >&2
                 ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
@@ -155,12 +141,12 @@
             screencapture.location = "~/Pictures/screenshots";
           };
 
-          services.nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
+          # services.nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
           nix.settings.experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
           system.configurationRevision = self.rev or self.dirtyRev or null; # Set Git commit hash for darwin-version.
           system.stateVersion = 5; # Used for backwards compatibility, please read the changelog before changing. # $ darwin-rebuild changelog
           nixpkgs.hostPlatform = "aarch64-darwin";
-          security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
 
           # Auto cleanup
           nix.optimise.automatic = true;
@@ -192,6 +178,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."ads" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
           configuration
           nix-homebrew.darwinModules.nix-homebrew
