@@ -225,3 +225,4 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 
 . "$HOME/.local/bin/env"
+export PATH="$PATH:$(go env GOPATH)/bin"
