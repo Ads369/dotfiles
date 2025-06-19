@@ -1,167 +1,279 @@
-// Zed settings
+// Настройки Zed
 //
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
+// Для получения информации о том, как настроить Zed, смотрите документацию:
+// https://zed.dev/docs/configuring-zed
 //
-// To see all of Zed's default settings without changing your
-// custom settings, run the `zed: Open Default Settings` command
-// from the command palette
+// Чтобы увидеть все настройки Zed по умолчанию, не изменяя свои
+// пользовательские настройки, выполните команду `zed: Open Default Settings`
+// из палитры команд.
 {
-  // ---- KEYMAP
-  "vim_mode": true,
-  "relative_line_numbers": true,
-  "command_aliases": {
-    "W": "w",
-    "Wq": "wq",
-    "Q": "q"
+  // --- Редактирование и ввод ---
+  // Настройки предсказаний кода и автодополнений (например, Copilot).
+  "edit_predictions": {
+    // Режим отображения предсказаний: "subtle" (едва заметный) или "aggressive" (агрессивный).
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null, // Прокси-сервер для Copilot (если используется).
+      "proxy_no_verify": null // Отключить проверку SSL для прокси (не рекомендуется в продакшене).
+    },
+    // Включить предсказания в текстовых потоках (например, в чатах).
+    "enabled_in_text_threads": true
   },
+  // Включить режим Vim для навигации и редактирования.
+  "vim_mode": true,
+  // Включить относительные номера строк (например, -1, 0, 1 вместо абсолютных).
+  "relative_line_numbers": true,
+  // Пользовательские псевдонимы команд для Vim-режима.
+  "command_aliases": {
+    "W": "w", // Сохранить файл.
+    "Wq": "wq", // Сохранить и выйти.
+    "Q": "q" // Выйти.
+  },
+  // Всегда автоматически закрывать скобки.
+  "always_treat_brackets_as_autoclosed": true,
+  // Задержка перед отображением всплывающего окна при наведении.
+  "hover_popover_delay": 10,
+  // Включить всплывающие окна при наведении курсора.
+  "hover_popover_enabled": true,
 
-  // ---- TERMINAL
+  // --- Терминал ---
   "terminal": {
+    // Шрифт для встроенного терминала.
     "font_family": "ZedMono Nerd Font",
+    // Размер шрифта терминала.
     "font_size": 14,
+    // Переменные окружения для терминала.
     "env": {
+      // Устанавливает Zed в качестве редактора по умолчанию для команд, которые открывают редактор.
       "EDITOR": "zed --wait"
     }
   },
 
-  // ---- UI
+  // --- Интерфейс пользователя (UI) ---
+  // Модификаторы для активной панели.
   "active_pane_modifiers": {
+    // Прозрачность неактивных панелей.
     "inactive_opacity": 0.5,
+    // Размер границы активной панели.
     "border_size": 0.4,
+    // Увеличение активной панели.
     "magnification": 1.2
   },
+  // Размер шрифта для элементов интерфейса Zed (меню, панели).
   "ui_font_size": 14,
+  // Размер шрифта для текста в буфере (кода).
   "buffer_font_size": 18,
+  // Семейство шрифтов для текста в буфере.
   "buffer_font_family": "Zed Plex Mono",
+  // Настройки темы.
   "theme": {
+    // Режим темы: "system" (использует системные настройки), "light", "dark".
     "mode": "system",
+    // Тема для светлого режима.
     "light": "Smooth Dark",
+    // Тема для темного режима.
     "dark": "Ayu Dark"
   },
+  // Настройки панели вкладок.
   "tab_bar": {
+    // Показывать кнопки истории навигации на панели вкладок.
     "show_nav_history_buttons": false
   },
+  // Настройки отдельных вкладок.
   "tabs": {
+    // Показывать иконки файлов на вкладках.
     "file_icons": true,
+    // Показывать статус Git на вкладках.
     "git_status": true,
+    // Показывать диагностику (ошибки, предупреждения) на вкладках: "errors", "all", "none".
     "show_diagnostics": "errors"
   },
-  // Indentation, rainbow indentation
+  // Настройки для отступов и радужных отступов.
   "indent_guides": {
+    // Включить направляющие отступов.
     "enabled": true,
+    // Режим раскраски направляющих отступов: "indent_aware" (понимает вложенность), "monochromatic".
     "coloring": "indent_aware"
   },
-  "always_treat_brackets_as_autoclosed": true,
+  // Настройки предварительного просмотра вкладок.
   "preview_tabs": {
+    // Включить предварительный просмотр из файлового поиска.
     "enable_preview_from_file_finder": true
   },
+  // Настройки производительности.
   "performance": {
+    // Показывать информацию о производительности в строке состояния.
     "show_in_status_bar": true
   },
+  // Настройки интеграции с Git.
   "git": {
+    // Встроенный blame (показывает, кто и когда изменил строку).
     "inline_blame": {
+      // Показывать сводку коммита во встроенном blame.
       "show_commit_summary": true
     }
   },
+  // Настройки панели проекта.
   "project_panel": {
+    // Показывать статус Git в панели проекта.
     "git_status": true
   },
+  // Настройки мини-карты (предварительный просмотр файла).
   "minimap": {
+    // Когда показывать мини-карту: "always", "on_scroll", "never".
     "show": "always"
   },
+  // Настройки полосы прокрутки.
   "scrollbar": {
+    // Когда показывать полосу прокрутки: "always", "on_hover", "never".
     "show": "never"
   },
+  // Настройки панели совместной работы.
   "collaboration_panel": {
+    // Расположение панели совместной работы: "left", "right", "bottom", "top".
     "dock": "right"
   },
 
-  // ---- AI
+  // --- Искусственный интеллект (AI) ---
   "agent": {
+    // Воспроизводить звук, когда агент завершает работу.
+    "play_sound_when_agent_done": true,
+    // Всегда разрешать действия инструментам агента.
     "always_allow_tool_actions": true,
+    // Профиль агента по умолчанию.
     "default_profile": "write",
+    // Версия агента.
     "version": "2",
+    // Модель AI по умолчанию.
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-3-7-sonnet"
     }
   },
 
-  // ---- SEARCH
+  // --- Поиск ---
   "search": {
+    // Показывать кнопку поиска.
     "button": false,
+    // Включать игнорируемые файлы в поиск.
     "include_ignored": false
   },
 
-  // ---- INLINE COMPLETIONS
+  // --- Встроенные автодополнения ---
+  // Показывать предсказания редактирования.
   "show_edit_predictions": true,
+  "completions": {
+    // Включить автодополнения.
+    "enabled": true,
+    // Провайдер автодополнений.
+    "provider": "zed"
+  },
   "features": {
+    // Провайдер предсказаний редактирования.
     "edit_prediction_provider": "zed"
   },
-  "hover_popover_enabled": true,
-  "hover_popover_delay": 10,
 
-  // ---- FILE TYPES
+  // --- Типы файлов ---
+  // Ассоциации типов файлов с расширениями или именами файлов.
   "file_types": {
+    // Ассоциировать файлы с ".env" или "env" в имени как тип "env".
     "env": [".env*", "env*"],
+    // Ассоциировать файлы с "Dockerfile" или "Dockerfile.*" в имени как тип "Dockerfile".
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    // Ассоциировать файлы с расширениями "json", "jsonc" или "*.code-snippets" как тип "JSON".
     "JSON": ["json", "jsonc", "*.code-snippets"]
   },
 
-  // ---- CODING
-  // ---- LANGUAGE & LSP ENHANCEMENTS
+  // --- Кодирование и языковые возможности ---
+  // Автоматическое форматирование при сохранении: "on", "off", "language_server".
   "format_on_save": "off",
+  // Предпочтительная длина строки по умолчанию для всех языков.
   "preferred_line_length": 80,
+  // Настройки для конкретных языков программирования.
   "languages": {
     "Python": {
+      // Предпочтительная длина строки для Python.
       "preferred_line_length": 82,
+      // Направляющие для обертывания строк на указанной длине.
       "wrap_guides": [82],
+      // Отключить предсказания редактирования специально для Python.
       "show_edit_predictions": false,
+      // Настройки форматировщика для Python.
       "formatter": [
         {
+          // Действия с кодом, связанные с форматированием.
           "code_actions": {
+            // Отключить "organizeImports" от Ruff.
             "source.organizeImports.ruff": false,
+            // Включить "fixAll" от Ruff.
             "source.fixAll.ruff": true
           }
         },
         {
+          // Использовать языковой сервер Ruff для форматирования.
           "language_server": {
             "name": "ruff"
           }
         }
       ],
-      "language_servers": ["pyright", "ruff"]
+      // Список языковых серверов для Python.
+      // `pyrefly` и `ruff` включены, `ty` и `pyright` исключены.
+      "language_servers": ["ruff", "!ty", "pyright", "!pyrefly"]
     },
     "SQL": {
+      // Настройки Prettier для SQL.
       "prettier": {
+        // Разрешить Prettier для SQL.
         "allowed": true,
+        // Плагины Prettier, используемые для SQL.
         "plugins": ["prettier-plugin-sql"]
       },
+      // Размер табуляции для SQL.
       "tab_size": 2
     }
   },
 
+  // --- Language Server Protocol (LSP) ---
+  // Этот блок конфигурирует параметры для различных языковых серверов (LSP).
+  // LSP предоставляет такие функции, как автодополнение, диагностика ошибок,
+  // форматирование, переход к определению и рефакторинг для конкретных языков.
+  //
+  // Zed использует LSP для обеспечения мощных возможностей редактирования кода.
+  // В этом блоке вы можете переопределять глобальные настройки LSP или
+  // задавать специфичные для каждого сервера параметры.
   "lsp": {
+    // Настройки для Pyright (языковой сервер для Python).
+    // Несмотря на то, что в "languages.Python.language_servers" Pyright
+    // отключен (`!pyright`), этот блок позволяет задать его конфигурацию.
+    // Если вы решите включить Pyright позже, эти настройки будут применены.
     "pyright": {
       "settings": {
         "python.analysis": {
+          // Режим диагностики: "project" (анализирует весь проект), "openFilesOnly".
           "diagnosticMode": "project",
+          // Режим проверки типов: "strict" (строгий), "basic", "off".
           "typeCheckingMode": "strict"
         },
         "python": {
+          // Путь к интерпретатору Python.
+          // Это указывает Pyright использовать Python из виртуального окружения ".venv/bin/python".
           "pythonPath": ".venv/bin/python"
         }
       }
     },
+    // Настройки для Ruff (быстрый линтер и форматер для Python).
     "ruff": {
+      // Опции инициализации, которые передаются языковому серверу Ruff при его запуске.
       "initialization_options": {
         "settings": {
-          // Ruff server settings goes here
+          // Здесь можно добавить дополнительные настройки для сервера Ruff.
+          // Например, настроить правила линтинга или игнорируемые ошибки.
 
+          // Максимальная длина строки для форматирования Ruff.
           "lineLength": 120
+          // Пример включения дополнительных правил линтинга (раскомментируйте при необходимости):
           // "lint": {
-          //     "extendSelect": ["I"]
+          //     "extendSelect": ["I"] // Добавляет проверку импортов (flake8-isort)
           // }
         }
       }

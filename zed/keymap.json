@@ -76,5 +76,129 @@
       "c": "project_panel::Copy",
       "p": "project_panel::Paste"
     }
+  },
+
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space f": "file_finder::Toggle"
+      // "space t": "search::Toggle"
+    }
+  },
+  {
+    "context": "Editor && (inline_completion_visible || suggested_action)",
+    "bindings": {
+      // "ctrl-l": "editor::AcceptCompletion", // Ваша новая клавиша для принятия
+      "tab": null, // Освобождаем Tab
+      "enter": null // Освобождаем Enter
+    }
+  },
+  // Bindings from VS Code
+  {
+    "context": "Editor",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-[": "editor::Outdent",
+      "cmd-]": "editor::Indent",
+      // ">": "vim::Indent",
+      // "<": "vim::Outdent",
+
+      // Не работает на моей клаве VSCode, Vim - работает!
+      "ctrl-shift-right": "editor::SelectLargerSyntaxNode", // Expand Selection
+      "ctrl-shift-left": "editor::SelectSmallerSyntaxNode", // Shrink Selection
+      // Закоментировал что бы не было проблем с перехватом
+      // "[ x": "editor::SelectLargerSyntaxNode",
+      // "] x": "editor::SelectSmallerSyntaxNode",
+
+      // macOS binds `ctrl-cmd-d` to Show Dictionary which breaks these two binds
+      // To use `ctrl-cmd-d` or `ctrl-k ctrl-cmd-d` in Zed you must execute this command and then restart:
+      //   defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>'
+      "cmd-d": ["editor::SelectNext", { "replace_newest": false }], // editor.action.addSelectionToNextFindMatch / find_under_expand
+      "ctrl-cmd-d": ["editor::SelectPrevious", { "replace_newest": false }], // editor.action.addSelectionToPreviousFindMatch
+      // "g >": ["editor::SelectNext", { "replace_newest": true }],
+      // "g <": ["editor::SelectPrevious", { "replace_newest": true }],
+
+      "cmd-shift-l": "editor::SelectAllMatches", // Select all occurrences of current selection
+      "cmd-f2": "editor::SelectAllMatches", // Select all occurrences of current word
+      // "g a": "editor::SelectAllMatches",
+      // "space h": "editor::SelectAllMatches",
+
+      "cmd-k cmd-i": "editor::Hover",
+      // "g h": "editor::Hover",
+      // "space k": "editor::Hover",
+
+      "cmd-/": ["editor::ToggleComments", { "advance_downwards": false }],
+      // "space c": "editor::ToggleComments",
+      "ctrl-c": "editor::ToggleComments",
+      // "g c": "vim::ToggleComments",
+
+      "cmd-|": "editor::MoveToEnclosingBracket",
+      "ctrl-m": "editor::MoveToEnclosingBracket",
+
+      // "z a": "editor::ToggleFold",
+      "alt-cmd-[": "editor::Fold",
+      "alt-cmd-]": "editor::UnfoldLines",
+      "cmd-k cmd-l": "editor::ToggleFold",
+      "cmd-k cmd-[": "editor::FoldRecursive",
+      "cmd-k cmd-]": "editor::UnfoldRecursive",
+
+      "cmd-k cmd-0": "editor::FoldAll",
+      "cmd-k cmd-j": "editor::UnfoldAll",
+      // "z shift-m": "editor::FoldAll",
+      // "z shift-r": "editor::UnfoldAll",
+
+      // Using `ctrl-space` / `ctrl-shift-space` in Zed requires disabling the macOS global shortcut.
+      // System Preferences->Keyboard->Keyboard Shortcuts->Input Sources->Select the previous input source (uncheck)
+      "ctrl-space": "editor::ShowCompletions",
+      "ctrl-x ctrl-o": "editor::ShowCompletions",
+      "ctrl-shift-space": "editor::ShowWordCompletions",
+
+      "cmd-.": "editor::ToggleCodeActions",
+      // "space a": "editor::ToggleCodeActions",
+
+      "cmd-\\": "pane::SplitRight",
+      // "space w s": "pane::SplitRight",
+      // "space w r": "pane::SplitRight",
+
+      "cmd-k v": "markdown::OpenPreviewToTheSide"
+    }
+  },
+
+  // Управление меню ShowCompletions
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-space": "editor::ShowCompletions"
+      // "ctrl-n": "editor::ContextMenuNext",
+      // "ctrl-p": "editor::ContextMenuPrev"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "cmd-y": "editor::ConfirmCompletion",
+      "tab": null,
+      // "enter": null
+      "enter": "editor::ConfirmCompletion"
+    }
+  },
+
+  // Prediction: https://zed.dev/docs/ai/edit-prediction
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      // "cmd-tab": "editor::AcceptEditPrediction",
+      // "alt-l": "editor::AcceptEditPrediction",
+      // "alt-tab": null,
+      "alt-tab": "editor::AcceptEditPrediction",
+      "tab": null
+    }
+  },
+  {
+    "context": "Editor && edit_prediction_conflict",
+    "use_key_equivalents": true,
+    "bindings": {
+      "alt-tab": "editor::AcceptEditPrediction"
+    }
   }
 ]
