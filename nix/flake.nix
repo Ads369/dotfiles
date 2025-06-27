@@ -19,88 +19,94 @@
       configuration =
         { pkgs, config, ... }:
         {
+          system.primaryUser = "ads";
           nixpkgs.config.allowUnfree = true; # Allow not OpesnSource
 
 
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           # NIX pkgs
-          environment.systemPackages = [
-            # pkgs.thefuck
-            pkgs.bat
-            pkgs.btop
-            pkgs.eza
-            pkgs.fd
-            pkgs.fzf
-            pkgs.harper # grammary
-            pkgs.jq # json
-            pkgs.lazydocker
-            pkgs.lazygit
-            pkgs.libffi
-            pkgs.mkalias
-            pkgs.neovim
-            pkgs.nerd-fonts._0xproto
-            pkgs.nerd-fonts.dejavu-sans-mono
-            pkgs.nerd-fonts.fira-code
-            pkgs.nerd-fonts.hack
-            pkgs.nerd-fonts.meslo-lg
-            pkgs.nerd-fonts.ubuntu-mono
-            pkgs.nerd-fonts.zed-mono
-            pkgs.nil
-            pkgs.nixd
-            pkgs.nixfmt-rfc-style
-            pkgs.oh-my-zsh
-            pkgs.poetry
-            pkgs.pre-commit
-            pkgs.rainfrog # sql manager
-            pkgs.ripgrep
-            pkgs.ruff
-            pkgs.skhd
-            pkgs.starship
-            pkgs.stow
-            pkgs.xh # test api
-            pkgs.yazi # file mamager
-            pkgs.zellij # new tmux
-            pkgs.zoxide # new cd
+          environment.systemPackages = with pkgs; [
+            # nodejs
+            bat
+            btop
+            eza
+            fd
+            ffmpeg
+            fzf
+            harfbuzz # fix for ffmpeg
+            harper # grammary
+            jq # json
+            kubectl
+            lazydocker
+            lazygit
+            libffi
+            mkalias
+            neovim
+            nerd-fonts._0xproto
+            nerd-fonts.dejavu-sans-mono
+            nerd-fonts.fira-code
+            nerd-fonts.hack
+            nerd-fonts.meslo-lg
+            nerd-fonts.ubuntu-mono
+            nerd-fonts.zed-mono
+            nil
+            nixd
+            nixfmt-rfc-style
+            nushell
+            oh-my-zsh
+            postgresql
+            pre-commit
+            rainfrog # sql manager
+            ripgrep
+            ruff
+            starship
+            stow
+            uv
+            wget
+            xh # test api
+            yazi # file mamager
+            zellij # new tmux
+            zoxide # new cd
+            zsh-autosuggestions
+            zsh-syntax-highlighting
+            mas # Mac App Store command-line interface
+            appcleaner
+            fly # vostok-soft
+            grandperspective # storage cleaner
+            iina
+            karabiner-elements
+            keepassxc
+            keycastr
+            maccy
+            aerospace
+            obsidian
+            raycast
+            shottr
+            the-unarchiver
+            bruno # postman alternative
+            # webtorrent-desktop
           ];
 
           # HomeBrew
           homebrew = {
             enable = true;
             brews = [
-              "ffmpeg"
-              "font-zed-mono-nerd-font"
-              "harfbuzz" # fix for ffmpeg
-              "kubectl"
-              "node"
-              "postgresql"
-              "prettier"
-              "thefuck"
-              "uv" # alternative poetry
-              "wget"
-              "zsh-autosuggestions"
-              "zsh-syntax-highlighting"
-              # "mas" # Mac App Store command-line interface
+              # "font-zed-mono-nerd-font"
+              # "harfbuzz" # fix for ffmpeg
+              # "prettier"
+              # "thefuck"
             ];
             casks = [
-              "appcleaner"
-              "dbeaver-community"
-              "ghostty"
-              "iina"
+              "amneziavpn"
+              "applite" # gui for brew
+              "deepl"
+              "dockdoor" # alternative alt-tab
               "jordanbaird-ice"
-              "karabiner-elements"
-              "keepassxc"
-              "keycastr"
-              "maccy"
-              "nikitabobko/tap/aerospace"
-              "obsidian"
-              "raycast"
-              "shottr"
-              "the-unarchiver"
-              "visual-studio-code"
-              "webtorrent"
-              "wezterm"
-              "zed"
+              # "nikitabobko/tap/aerospace"
+              # "dbeaver-community"
+              # "visual-studio-code"
+              # "wezterm"
             ];
 
             # Apps from AppStor
@@ -153,7 +159,7 @@
           nix.gc = {
             automatic = true;
             interval = {
-              Weekday = 0;
+              Weekday = 7;
               Hour = 0;
               Minute = 0;
             };
@@ -163,11 +169,12 @@
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
           programs.zsh.enable = true; # default shell on catalina
+          # programs.nushell.enable = true;
 
           # programs.git = {
           #   enable = true;
-          #   userName = "Leigh Gable";
-          #   userEmail = "leighgable@gmail.com";
+          #   userName = "Dmitriy Aleksandrov";
+          #   userEmail = "Adsis369@gmail.com";
           # };
 
 
