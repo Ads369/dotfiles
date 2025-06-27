@@ -139,8 +139,8 @@ setopt hist_verify
 
 
 # plugins
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # plugins=(
 #     poetry
 #     poetry-env
@@ -178,8 +178,8 @@ alias ltree="eza --tree --level=2  --icons --git"
 
 # ---- TheFuck -----
 # thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+# eval $(thefuck --alias)
+# eval $(thefuck --alias fk)
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
@@ -224,5 +224,9 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 	 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
-. "$HOME/.local/bin/env"
-export PATH="$PATH:$(go env GOPATH)/bin"
+# . "$HOME/.local/bin/env"
+# export PATH="$PATH:$(go env GOPATH)/bin"
+
+
+# ---- NuShell  ----
+export NU_STANDARD_CONFIG_DIR="$HOME/.config"
