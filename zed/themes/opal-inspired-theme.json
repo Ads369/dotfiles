@@ -1,0 +1,91 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
+  "name": "Opal Inspired",
+  "author": "ChatGPT",
+  "themes": [
+    {
+      "name": "Opal Inspired Dark",
+      "appearance": "dark",
+      "style": {
+        "background": "#191a2d",
+        "surface.background": "#1b1e31",
+        "elevated_surface.background": "#1b1e31",
+        "element.background": "#4e4cd390",
+        "element.hover": "#4e4cd3",
+        "element.selected": "#4e4cd3",
+        "text": "#fbf4ff",
+        "text.muted": "#4051b9",
+        "status_bar.background": "#1b1e31",
+        "title_bar.background": "#1b1e31",
+        "toolbar.background": "#1b1e31",
+        "tab_bar.background": "#1b1e31",
+        "tab.inactive_background": "#1b1e31",
+        "tab.active_background": "#4e4cd330",
+        "panel.background": "#1b1e31",
+        "editor.background": "#191a2d",
+        "editor.foreground": "#fbf4ff",
+        "editor.gutter.background": "#191a2d",
+        "editor.active_line.background": "#4e4cd330",
+        "editor.line_number": "#4051b980",
+        "editor.active_line_number": "#00d7f5",
+        "scrollbar_thumb.background": "#4051b980",
+        "scrollbar.thumb.hover_background": "#4051b9",
+        "scrollbar.thumb.border": "#4051b980",
+        "scrollbar.track.background": "#1b1e31",
+        "scrollbar.track.border": "#1b1e3100",
+        "error": "#fa4b7b",
+        "warning": "#ff8a00",
+        "info": "#00d7f5",
+        "players": [
+          {
+            "cursor": "#00d7f5",
+            "selection": "#4e4cd330",
+            "background": "#4e4cd330"
+          }
+        ],
+        "syntax": {
+          "comment": {
+            "color": "#4df287",
+            "font_style": "italic"
+          },
+          "keyword": {
+            "color": "#4e4cd3"
+          },
+          "string": {
+            "color": "#fa4b7b"
+          },
+          "number": {
+            "color": "#ff8a00"
+          },
+          "function": {
+            "color": "#d8ccfe"
+          },
+          "type": {
+            "color": "#bdfffb"
+          },
+          "variable": {
+            "color": "#00acb5"
+          },
+          "constant": {
+            "color": "#00d7f5"
+          },
+          "property": {
+            "color": "#4e4cd3"
+          },
+          "attribute": {
+            "color": "#fbf4ff"
+          },
+          "constructor": {
+            "color": "#ff8a00"
+          },
+          "operator": {
+            "color": "#00acb5"
+          },
+          "string.escape": {
+            "color": "#ff8a00"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -9,6 +9,9 @@
 {
   // --- Редактирование и ввод ---
   // Настройки предсказаний кода и автодополнений (например, Copilot).
+  "outline_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
     // Режим отображения предсказаний: "subtle" (едва заметный) или "aggressive" (агрессивный).
     "mode": "subtle",
@@ -70,7 +73,7 @@
     // Режим темы: "system" (использует системные настройки), "light", "dark".
     "mode": "system",
     // Тема для светлого режима.
-    "light": "Smooth Dark",
+    "light": "Zedokai Darker (Filter Ristretto)",
     // Тема для темного режима.
     "dark": "Ayu Dark"
   },
@@ -147,7 +150,7 @@
     // Модель AI по умолчанию.
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet"
+      "model": "claude-opus-4"
     }
   },
 
@@ -218,7 +221,7 @@
       ],
       // Список языковых серверов для Python.
       // `pyrefly` и `ruff` включены, `ty` и `pyright` исключены.
-      "language_servers": ["ruff", "!ty", "pyright", "!pyrefly"]
+      "language_servers": ["!ty", "pyright", "!pyrefly", "ruff"]
     },
     "SQL": {
       // Настройки Prettier для SQL.
