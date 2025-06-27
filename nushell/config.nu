@@ -24,15 +24,10 @@ $env.EDITOR = "nvim"
 # # Алиасы в Nushell объявляются с помощью 'alias'.
 # # Для внешних команд используйте 'external'.
 
-# alias db = rainfrog
-
-# zshrc
-# alias reload = source $nu.config-path # $nu.config-path указывает на текущий файл конфига
-
 def dot [] { cd ~/dotfiles | nvim . }
 
 # Dir list, nav
-# def pwdy [] { ^echo (pwd).path | pbcopy } # Используем ^echo для внешней команды
+def pwdy [] { ^echo (pwd) | pbcopy } # Используем ^echo для внешней команды
 alias cl = clear
 alias cat = bat
 
@@ -61,11 +56,11 @@ alias cat = bat
 # Убедитесь, что у вас установлен плагин 'nu_plugin_cd'.
 # Для этого вам нужно добавить его в список плагинов в вашем env.nu (см. ниже)
 # и затем запустить `nu -c "plugin install nu_plugin_cd"`
-# alias .. = "cd .."
-# alias ... = "cd ../.."
-# alias .... = "cd ../../.."
-# alias ..... = "cd ../../../.."
-# alias ...... = "cd ../../../../.."
+alias .. = cd ..
+alias ... = cd ../..
+alias .... = cd ../../..
+alias ..... = cd ../../../..
+alias ...... = cd ../../../../..
 
 # Obsidian
 $env.OBSIDIAN_PATH = $"($env.HOME)/Library/Mobile Documents/iCloud~md~obsidian/Documents/ads_obsidian"
@@ -79,35 +74,18 @@ alias v = nvim
 alias nn = nvim .
 
 # VI Mode!!!
-# В Nushell vi-режим переключается через `config.nu`
-# В секции `keybindings` вашего `config.nu` (либо в отдельном файле, который вы сорсите)
-# вы можете добавить:
-# let keybindings = [
-#   # ...
-#   {
-#     name: vi_normal_mode
-#     modifier: "none"
-#     keycode: "j"
-#     mode: "insert"
-#     event: {
-#       send: "toggle_vi_mode"
-#     }
-#   }
-# ]
-# Но это будет просто переключение режима при двойном jj, не выполнение команды.
-# Для более сложных биндингов vi, возможно, потребуется более глубокая настройка или плагины.
-# Встроенный `bindkey` в Nushell отличается от Zsh.
-# bindkey jj vi-cmd-mode # Это не будет работать напрямую как в Zsh.
+$env.config.edit_mode = 'vi'
 
 # Zed
 alias zz = zed .
 
 # Python
-# alias ss = source .venv/bin/activate # Активация venv в Nushell работает иначе, но эта команда может сработать.
+# Активация venv в Nushell работает иначе, но эта команда может сработать.
+# alias ss = source .venv/bin/activate
 # Если она не работает, вам нужно будет написать функцию, которая
 # будет устанавливать PATH для venv, например:
 # def "ss" [] {
-#    let venv_path = (pwd).path + "/.venv/bin"
+#    let venv_path = (pwd) + "/.venv/bin"
 #    if (test -d $venv_path) {
 #        $env.PATH = ($venv_path | append $env.PATH)
 #        print "Virtual environment activated."
@@ -222,28 +200,15 @@ alias idepy = ~/.dotfiles/zshrc/tmux_script_ide_py
 # export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 $env.FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow"
 
-# ----- Bat (better cat) -----
-# Уже сделано с alias cat = bat
 
 # ---- Eza (better ls) -----
 alias l = eza -l --icons --git -a
 alias lt = eza --tree --level=2 --long --icons --git
 alias ltree = eza --tree --level=2 --icons --git
 
-# ---- TheFuck -----
-# TheFuck требует специфической интеграции для каждого шелла.
-# Для Nushell вы можете найти инструкции на их GitHub-странице или в документации Nushell.
-# Часто это выглядит как:
-# source (thefuck --alias nu) # Или похожая команда.
-# eval (thefuck --alias)
-# eval (thefuck --alias fk)
-# Проверьте документацию TheFuck для Nushell.
 
 # ---- Zoxide (better cd) ----
-# Zoxide поддерживает Nushell.
-# eval "$(zoxide init zsh)"
-# Это будет выглядеть как:
-zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
+zoxide init nushell | save -f ~/.zoxide.nu
 
 # ---- Docker ----
 # source /Users/ads/.docker/init-zsh.sh || true # Это специфично для Zsh
@@ -257,19 +222,16 @@ zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
 # alias docker_rmi_all = "docker rmi (docker images -q)"
 # alias docker_rmi_dangling = "docker rmi (docker images -qa -f 'dangling=true')"
 
-# ---- Poetry ----
-# alias po = "poetry"
-
 # ---- Yazi ----
-# def "y" [...args] {
-#     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-#     yazi $args --cwd-file $tmp
-#     let cwd = (open $tmp | str trim)
-#     if not ($cwd | is-empty) and ($cwd != (pwd).path) {
-#         cd $cwd
-#     }
-#     rm -f $tmp
-# }
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
 
 # ---- NIX ----
 # Эти переменные окружения лучше поместить в `env.nu`.
@@ -287,5 +249,10 @@ zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
 # export PATH="$PATH:$(go env GOPATH)/bin"
 
 
-# source ~/.config/nushell/zoxide.nu
+# ---- GO PATH ----
+# Эти переменные окружения лучше поместить в `env.nu`.
+alias drs = sudo darwin-rebuild switch --flake ~/dotfiles/nix#ads
+
+
+source ~/.zoxide.nu
 source ~/dotfiles/nushell/scripts/findpkg.nu
