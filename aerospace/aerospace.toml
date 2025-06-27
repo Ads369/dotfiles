@@ -64,6 +64,11 @@ if.app-name-regex-substring = 'Obsidian'
 run = 'move-node-to-workspace O'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'Safari'
+run = 'move-node-to-workspace W'
+
+
+[[on-window-detected]]
 if.window-title-regex-substring = 'Preferences|Settings' # или другое точное название окна настроек
 run = 'layout floating'
 
@@ -149,7 +154,7 @@ alt-ctrl-m = 'move-workspace-to-monitor --wrap-around next'
 # Автоматический запуск и перемещение на нужный рабочий стол
 # Если приложение уже запущено, AeroSpace просто сфокусируется на его окне.
 # Если рабочего стола нет, AeroSpace его создаст.
-alt-t = 'exec-and-forget open -a "Ghostty"; workspace T'  # Запустить Ghostty и перейти на Workspace T
-alt-z = 'exec-and-forget open -a "Zed"; workspace Z'      # Запустить Zed и перейти на Workspace Z
-alt-o = 'exec-and-forget open -a "Obsidian"; workspace O' # Запустить Obsidian и перейти на Workspace O
-alt-w = 'exec-and-forget open -a "Safari"; workspace O' # Запустить Obsidian и перейти на Workspace O
+alt-t = 'exec-and-forget open -a "Ghostty"; workspace T'
+alt-z = 'exec-and-forget open -a "Zed"; workspace Z'
+alt-o = 'exec-and-forget open -a "Obsidian"; workspace O'
+alt-w = 'exec-and-forget open -a "Safari"; workspace W'
