@@ -37,7 +37,10 @@
 
   // --- Терминал ---
   "terminal": {
-    "font_family": "ZedMono Nerd Font",
+    "shell": {
+      "program": "/run/current-system/sw/bin/nu"
+    },
+    "font_family": "MonoLisa Nerd Font",
     "font_size": 14,
 
     // Переменные окружения для терминала.
@@ -58,7 +61,7 @@
 
   // Семейство шрифтов для текста в буфере.
   // "buffer_font_family": "Zed Plex Mono",
-  "buffer_font_family": "Monolisa",
+  "buffer_font_family": "MonoLisa Nerd Font",
   "theme": {
     "mode": "system",
     "light": "Zedokai Darker (Filter Ristretto)",
