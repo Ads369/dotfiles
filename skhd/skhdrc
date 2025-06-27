@@ -19,13 +19,13 @@ rcmd - o : open -a "Obsidian"
 
 # Ghostty
 # rcmd - g : open -a "/Applications/Ghostty.app"
-rcmd - g : open -a "Ghostty"
+# rcmd - g : open -a "Ghostty"
 
 # WezTerm
 rcmd - w : open -a "WezTerm"
 
 # Zed
-rcmd - z : open -a "Zed"
+# rcmd - z : open -a "Zed"
 
 # DeepL
 rcmd - d : open -a "DeepL"
