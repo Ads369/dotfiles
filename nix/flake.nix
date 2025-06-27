@@ -6,6 +6,11 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,6 +19,7 @@
       nix-darwin,
       nixpkgs,
       nix-homebrew,
+      home-manager,
     }:
     let
       configuration =
@@ -21,26 +27,38 @@
         {
           system.primaryUser = "ads";
           nixpkgs.config.allowUnfree = true; # Allow not OpesnSource
-
+          users.users.ads.shell = pkgs.nushell;
 
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           # NIX pkgs
           environment.systemPackages = with pkgs; [
             # nodejs
+            # webtorrent-desktop
+            aerospace
+            appcleaner
             bat
+            bruno # postman alternative
             btop
             eza
             fd
             ffmpeg
+            fly # vostok-soft
             fzf
+            grandperspective # storage cleaner
             harfbuzz # fix for ffmpeg
             harper # grammary
+            iina
             jq # json
+            karabiner-elements
+            keepassxc
+            keycastr
             kubectl
             lazydocker
             lazygit
             libffi
+            maccy
+            mas # Mac App Store command-line interface
             mkalias
             neovim
             nerd-fonts._0xproto
@@ -54,14 +72,19 @@
             nixd
             nixfmt-rfc-style
             nushell
+            obsidian
             oh-my-zsh
             postgresql
             pre-commit
             rainfrog # sql manager
+            raycast
             ripgrep
             ruff
+            shottr
             starship
             stow
+            taplo # LSP support for TOML
+            the-unarchiver
             uv
             wget
             xh # test api
@@ -70,27 +93,17 @@
             zoxide # new cd
             zsh-autosuggestions
             zsh-syntax-highlighting
-            mas # Mac App Store command-line interface
-            appcleaner
-            fly # vostok-soft
-            grandperspective # storage cleaner
-            iina
-            karabiner-elements
-            keepassxc
-            keycastr
-            maccy
-            aerospace
-            obsidian
-            raycast
-            shottr
-            the-unarchiver
-            bruno # postman alternative
-            # webtorrent-desktop
           ];
 
           # HomeBrew
           homebrew = {
+            onActivation = {
+              autoUpdate = true;
+              upgrade = true;
+              cleanup = "zap";
+            };
             enable = true;
+
             brews = [
               # "font-zed-mono-nerd-font"
               # "harfbuzz" # fix for ffmpeg
@@ -99,10 +112,10 @@
             ];
             casks = [
               "amneziavpn"
-              "applite" # gui for brew
               "deepl"
               "dockdoor" # alternative alt-tab
               "jordanbaird-ice"
+              # "applite" # gui for brew
               # "nikitabobko/tap/aerospace"
               # "dbeaver-community"
               # "visual-studio-code"
@@ -111,10 +124,6 @@
 
             # Apps from AppStor
             # masApps = { };
-
-            onActivation.cleanup = "zap";
-            onActivation.autoUpdate = true;
-            onActivation.upgrade = true;
           };
 
           # create allias for nix app
@@ -168,15 +177,14 @@
 
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
+          # Enabling zsh at the system level for compatibility
           programs.zsh.enable = true; # default shell on catalina
-          # programs.nushell.enable = true;
 
           # programs.git = {
           #   enable = true;
           #   userName = "Dmitriy Aleksandrov";
           #   userEmail = "Adsis369@gmail.com";
           # };
-
 
         };
 
@@ -197,6 +205,12 @@
               autoMigrate = true; # Automatically migrate existing Homebrew installations
             };
           }
+          # home-manager.darwinModules.home-manager
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          #   home-manager.users.ads = import ./home.nix;
+          # }
         ];
       };
 

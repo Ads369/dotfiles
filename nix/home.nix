@@ -1,4 +1,4 @@
-# home.nix
+# This is config for Home-manager
 # home-manager switch
 
 { config, pkgs, ... }:
@@ -9,9 +9,8 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   # Makes sense for user specific applications that shouldn't be available system-wide
-  home.packages =
-    [
-    ];
+  home.packages = [
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -29,9 +28,8 @@
     ".config/btop".source = ../btop;
   };
 
-  home.sessionVariables =
-    {
-    };
+  home.sessionVariables = {
+  };
 
   home.sessionPath = [
     "/run/current-system/sw/bin"
