@@ -29,6 +29,16 @@
           nixpkgs.config.allowUnfree = true; # Allow not OpesnSource
           users.users.ads.shell = pkgs.nushell;
 
+          fonts.packages = with pkgs; [
+            nerd-fonts._0xproto
+            nerd-fonts.dejavu-sans-mono
+            nerd-fonts.fira-code
+            nerd-fonts.hack
+            nerd-fonts.meslo-lg
+            nerd-fonts.ubuntu-mono
+            nerd-fonts.zed-mono
+          ];
+
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
           # NIX pkgs
@@ -61,13 +71,6 @@
             mas # Mac App Store command-line interface
             mkalias
             neovim
-            nerd-fonts._0xproto
-            nerd-fonts.dejavu-sans-mono
-            nerd-fonts.fira-code
-            nerd-fonts.hack
-            nerd-fonts.meslo-lg
-            nerd-fonts.ubuntu-mono
-            nerd-fonts.zed-mono
             nil
             nixd
             nixfmt-rfc-style
@@ -93,6 +96,10 @@
             zoxide # new cd
             zsh-autosuggestions
             zsh-syntax-highlighting
+            betterdisplay
+            docker
+            # spotify
+            spotify-qt
           ];
 
           # HomeBrew
@@ -115,6 +122,9 @@
               "deepl"
               "dockdoor" # alternative alt-tab
               "jordanbaird-ice"
+              "telegram"
+              # "tor-browser"
+              # "termius"
               # "applite" # gui for brew
               # "nikitabobko/tap/aerospace"
               # "dbeaver-community"
@@ -123,7 +133,9 @@
             ];
 
             # Apps from AppStor
-            # masApps = { };
+            masApps = {
+              "RunCat" = 1429033973;
+            };
           };
 
           # create allias for nix app
