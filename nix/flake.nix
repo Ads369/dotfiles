@@ -50,6 +50,7 @@
             bat
             bruno # postman alternative
             btop
+            carapace
             eza
             fd
             ffmpeg
@@ -59,6 +60,7 @@
             harfbuzz # fix for ffmpeg
             harper # grammary
             iina
+            jujutsu
             jq # json
             karabiner-elements
             keepassxc
