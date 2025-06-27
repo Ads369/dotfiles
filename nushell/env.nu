@@ -19,6 +19,11 @@ $env.PATH = ($env.PATH | prepend "/Users/ads/.local/bin")
 $env.NIX_CONF_DIR = $"($env.HOME)/.config/nix"
 $env.PATH = ($env.PATH | prepend "/run/current-system/sw/bin")
 
+# Carapace
+# опционально: позволяет Carapace использовать завершения из других оболочек
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+
+
 # Nix-daemon
 # Убедитесь, что этот путь актуален для вашей установки Nix.
 # if (test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh') {

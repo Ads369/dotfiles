@@ -254,5 +254,17 @@ def --env y [...args] {
 alias drs = sudo darwin-rebuild switch --flake ~/dotfiles/nix#ads
 
 
+# ---- Carapace ----
+mkdir ~/.cache/carapace # Создать директорию для кэша
+carapace _carapace nushell | save --force ~/.cache/carapace/init.nu # Сгенерировать init скрипт для Nushell
+
+# ---- JJ ----
+# jj util completion nushell | save completions-jj.nu
+jj config set --user user.name "Dmitriy Aleksandrov"
+jj config set --user user.email "Adsis369@gmail.com"
+
 source ~/.zoxide.nu
 source ~/dotfiles/nushell/scripts/findpkg.nu
+source ~/.cache/carapace/init.nu # Источник скрипта для активации Carapace
+# use completions-jj.nu *  # Or `source completions-jj.nu`
+# source completions-jj.nu
