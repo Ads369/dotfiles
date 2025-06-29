@@ -68,6 +68,7 @@
             kubectl
             lazydocker
             lazygit
+            lazyjj
             libffi
             maccy
             mas # Mac App Store command-line interface
@@ -77,6 +78,7 @@
             nixd
             nixfmt-rfc-style
             nushell
+            nodejs
             obsidian
             oh-my-zsh
             postgresql
@@ -101,7 +103,6 @@
             betterdisplay
             docker
             # spotify
-            spotify-qt
           ];
 
           # HomeBrew
@@ -114,13 +115,12 @@
             enable = true;
 
             brews = [
-              # "font-zed-mono-nerd-font"
               # "harfbuzz" # fix for ffmpeg
               # "prettier"
               # "thefuck"
             ];
             casks = [
-              "amneziavpn"
+              # "amneziavpn"
               "deepl"
               "dockdoor" # alternative alt-tab
               "jordanbaird-ice"
