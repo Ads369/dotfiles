@@ -81,7 +81,8 @@ alias zz = zed .
 
 # Python
 # Активация venv в Nushell работает иначе, но эта команда может сработать.
-# alias ss = source .venv/bin/activate
+alias ss = overlay use .venv/bin/activate.nu
+alias py = python3 (это алиас, в config.nu)
 # Если она не работает, вам нужно будет написать функцию, которая
 # будет устанавливать PATH для venv, например:
 # def "ss" [] {
