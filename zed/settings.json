@@ -14,6 +14,7 @@
   },
   "edit_predictions": {
     // Режим отображения предсказаний: "subtle" (едва заметный) или "aggressive" (агрессивный).
+    //
     "mode": "subtle",
     "copilot": {
       "proxy": null, // Прокси-сервер для Copilot (если используется).
@@ -23,6 +24,7 @@
     "enabled_in_text_threads": true
   },
   "vim_mode": true, // Включить режим Vim для навигации и редактирования.
+  // "helix_mode": true, // Режим Объект-Действие
   "relative_line_numbers": true, // Включить относительные номера строк
 
   // Пользовательские псевдонимы команд для Vim-режима.
@@ -64,7 +66,7 @@
   "buffer_font_family": "MonoLisa Nerd Font",
   "theme": {
     "mode": "system",
-    "light": "Zedokai Darker (Filter Ristretto)",
+    "light": "Gruvbox Dark Soft",
     "dark": "Ayu Dark"
   },
 
