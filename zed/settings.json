@@ -42,6 +42,11 @@
     "shell": {
       "program": "/run/current-system/sw/bin/nu"
     },
+    "detect_venv": {
+      "on": {
+        "activate_script": "nushell"
+      }
+    },
     "font_family": "MonoLisa Nerd Font",
     "font_size": 14,
 
@@ -141,11 +146,10 @@
     // Профиль агента по умолчанию.
     "default_profile": "write",
     // Версия агента.
-    "version": "2",
     // Модель AI по умолчанию.
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4"
+      "model": "claude-opus-4-thinking"
     }
   },
 

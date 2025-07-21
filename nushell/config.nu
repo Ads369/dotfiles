@@ -267,5 +267,6 @@ jj config set --user user.email "Adsis369@gmail.com"
 source ~/.zoxide.nu
 source ~/dotfiles/nushell/scripts/findpkg.nu
 source ~/.cache/carapace/init.nu # Источник скрипта для активации Carapace
+source ~/.local/share/atuin/init.nu # atuin
 # use completions-jj.nu *  # Or `source completions-jj.nu`
 # source completions-jj.nu

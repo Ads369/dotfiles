@@ -47,6 +47,7 @@
             # webtorrent-desktop
             aerospace
             appcleaner
+            atuin # new bash history
             bat
             bruno # postman alternative
             btop
@@ -130,7 +131,7 @@
               # "applite" # gui for brew
               # "nikitabobko/tap/aerospace"
               # "dbeaver-community"
-              # "visual-studio-code"
+              "visual-studio-code"
               # "wezterm"
             ];
 
