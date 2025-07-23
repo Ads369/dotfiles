@@ -2,22 +2,20 @@
 # и предназначен для установки переменных окружения и путей.
 
 # --- PATH ---
-# В Nushell вы управляете $env.PATH как список строк.
-# $env.PATH = [
-#   "/Users/ads/.local/bin"
-#   ($env.PATH | split row (char esep)) # Добавляем старый PATH, если он существует
-# ]
-# Гораздо проще и рекомендуемее добавлять элементы к PATH так:
-$env.PATH = ($env.PATH | prepend "/Users/ads/.local/bin")
+$env.PATH = ($env.PATH | split row (char esep) | append [
+    "/Users/ads/.local/bin"
+    "/usr/local/bin"
+    "/opt/homebrew/bin"
+    "/run/current-system/sw/bin" # NIX
+])
+
 
 # Python
 # Если у вас есть специальные пути для Python/pip, добавляйте их сюда.
 # Для симлинков, как вы упоминали, это будет работать, если они в PATH.
-# alias py=python3 (это алиас, в config.nu)
 
 # NIX
 $env.NIX_CONF_DIR = $"($env.HOME)/.config/nix"
-$env.PATH = ($env.PATH | prepend "/run/current-system/sw/bin")
 
 # Carapace
 # опционально: позволяет Carapace использовать завершения из других оболочек

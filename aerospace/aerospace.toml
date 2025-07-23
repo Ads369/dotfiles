@@ -1,7 +1,7 @@
 #
 # Общие настройки AeroSpace
 #
-start-at-login = false                                                 # Запуск AeroSpace при входе в систему
+start-at-login = true                                                 # Запуск AeroSpace при входе в систему
 enable-normalization-flatten-containers = true                         # Нормализация контейнеров для предсказуемого поведения
 enable-normalization-opposite-orientation-for-nested-containers = true # Автоматическая смена ориентации для вложенных контейнеров
 

@@ -47,6 +47,7 @@
             # webtorrent-desktop
             aerospace
             appcleaner
+            atuin # new bash history
             bat
             bruno # postman alternative
             btop
@@ -68,6 +69,7 @@
             kubectl
             lazydocker
             lazygit
+            lazyjj
             libffi
             maccy
             mas # Mac App Store command-line interface
@@ -77,6 +79,7 @@
             nixd
             nixfmt-rfc-style
             nushell
+            nodejs
             obsidian
             oh-my-zsh
             postgresql
@@ -101,7 +104,6 @@
             betterdisplay
             docker
             # spotify
-            spotify-qt
           ];
 
           # HomeBrew
@@ -114,13 +116,12 @@
             enable = true;
 
             brews = [
-              # "font-zed-mono-nerd-font"
               # "harfbuzz" # fix for ffmpeg
               # "prettier"
               # "thefuck"
             ];
             casks = [
-              "amneziavpn"
+              # "amneziavpn"
               "deepl"
               "dockdoor" # alternative alt-tab
               "jordanbaird-ice"
@@ -130,7 +131,7 @@
               # "applite" # gui for brew
               # "nikitabobko/tap/aerospace"
               # "dbeaver-community"
-              # "visual-studio-code"
+              "visual-studio-code"
               # "wezterm"
             ];
 

@@ -14,6 +14,7 @@
   },
   "edit_predictions": {
     // Режим отображения предсказаний: "subtle" (едва заметный) или "aggressive" (агрессивный).
+    //
     "mode": "subtle",
     "copilot": {
       "proxy": null, // Прокси-сервер для Copilot (если используется).
@@ -23,6 +24,7 @@
     "enabled_in_text_threads": true
   },
   "vim_mode": true, // Включить режим Vim для навигации и редактирования.
+  // "helix_mode": true, // Режим Объект-Действие
   "relative_line_numbers": true, // Включить относительные номера строк
 
   // Пользовательские псевдонимы команд для Vim-режима.
@@ -39,6 +41,11 @@
   "terminal": {
     "shell": {
       "program": "/run/current-system/sw/bin/nu"
+    },
+    "detect_venv": {
+      "on": {
+        "activate_script": "nushell"
+      }
     },
     "font_family": "MonoLisa Nerd Font",
     "font_size": 14,
@@ -64,7 +71,7 @@
   "buffer_font_family": "MonoLisa Nerd Font",
   "theme": {
     "mode": "system",
-    "light": "Zedokai Darker (Filter Ristretto)",
+    "light": "Gruvbox Dark Soft",
     "dark": "Ayu Dark"
   },
 
@@ -139,11 +146,10 @@
     // Профиль агента по умолчанию.
     "default_profile": "write",
     // Версия агента.
-    "version": "2",
     // Модель AI по умолчанию.
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4"
+      "model": "claude-opus-4-thinking"
     }
   },
 

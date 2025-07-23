@@ -81,7 +81,8 @@ alias zz = zed .
 
 # Python
 # Активация venv в Nushell работает иначе, но эта команда может сработать.
-# alias ss = source .venv/bin/activate
+alias ss = overlay use .venv/bin/activate.nu
+alias py = python3 (это алиас, в config.nu)
 # Если она не работает, вам нужно будет написать функцию, которая
 # будет устанавливать PATH для venv, например:
 # def "ss" [] {
@@ -266,5 +267,6 @@ jj config set --user user.email "Adsis369@gmail.com"
 source ~/.zoxide.nu
 source ~/dotfiles/nushell/scripts/findpkg.nu
 source ~/.cache/carapace/init.nu # Источник скрипта для активации Carapace
+source ~/.local/share/atuin/init.nu # atuin
 # use completions-jj.nu *  # Or `source completions-jj.nu`
 # source completions-jj.nu

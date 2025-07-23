@@ -58,7 +58,7 @@
     // Now dont work Inline Complition by key
     "context": "Editor",
     "bindings": {
-      "ctrl-\\": "editor::ShowInlineCompletion"
+      "ctrl-\\": "editor::ShowEditPrediction"
     }
   },
 
@@ -86,7 +86,7 @@
     }
   },
   {
-    "context": "Editor && (inline_completion_visible || suggested_action)",
+    "context": "Editor && (edit_prediction_visible || suggested_action)",
     "bindings": {
       // "ctrl-l": "editor::AcceptCompletion", // Ваша новая клавиша для принятия
       "tab": null, // Освобождаем Tab
